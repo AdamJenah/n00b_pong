@@ -1,4 +1,6 @@
 #pragma once
+#include "NoobClass.h"
+
 class Physics
 {
 public:

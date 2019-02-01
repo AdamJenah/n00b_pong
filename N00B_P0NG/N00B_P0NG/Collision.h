@@ -1,9 +1,9 @@
-
+#pragma once
+#include "NoobClass.h"
 #include "Objects.h"
 
 // Checks collsion between objects
-class Collision :
-	public Objects
+class Collision
 {
 public:
 	Collision();

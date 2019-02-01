@@ -1,14 +1,5 @@
-﻿  InputHandler.cpp
-c:\users\101057906\desktop\n00b_p0ng\n00b_p0ng\inputhandler.cpp(56): warning C4474: 'swprintf_s' : too many arguments passed for format string
-  c:\users\101057906\desktop\n00b_p0ng\n00b_p0ng\inputhandler.cpp(56): note: placeholders and their parameters expect 0 variadic arguments, but 1 were provided
-c:\users\101057906\desktop\n00b_p0ng\n00b_p0ng\inputhandler.cpp(61): warning C4474: 'swprintf_s' : too many arguments passed for format string
-  c:\users\101057906\desktop\n00b_p0ng\n00b_p0ng\inputhandler.cpp(61): note: placeholders and their parameters expect 0 variadic arguments, but 1 were provided
-c:\users\101057906\desktop\n00b_p0ng\n00b_p0ng\inputhandler.cpp(66): warning C4474: 'swprintf_s' : too many arguments passed for format string
-  c:\users\101057906\desktop\n00b_p0ng\n00b_p0ng\inputhandler.cpp(66): note: placeholders and their parameters expect 0 variadic arguments, but 1 were provided
-c:\users\101057906\desktop\n00b_p0ng\n00b_p0ng\inputhandler.cpp(71): warning C4474: 'swprintf_s' : too many arguments passed for format string
-  c:\users\101057906\desktop\n00b_p0ng\n00b_p0ng\inputhandler.cpp(71): note: placeholders and their parameters expect 0 variadic arguments, but 1 were provided
-c:\users\101057906\desktop\n00b_p0ng\n00b_p0ng\inputhandler.cpp(76): warning C4474: 'swprintf_s' : too many arguments passed for format string
-  c:\users\101057906\desktop\n00b_p0ng\n00b_p0ng\inputhandler.cpp(76): note: placeholders and their parameters expect 0 variadic arguments, but 1 were provided
-c:\users\101057906\desktop\n00b_p0ng\n00b_p0ng\inputhandler.cpp(81): warning C4474: 'swprintf_s' : too many arguments passed for format string
-  c:\users\101057906\desktop\n00b_p0ng\n00b_p0ng\inputhandler.cpp(81): note: placeholders and their parameters expect 0 variadic arguments, but 1 were provided
-  N00B_P0NG.vcxproj -> C:\Users\101057906\Desktop\N00B_P0NG\Debug\N00B_P0NG.exe
+﻿  Engine.cpp
+  Objects.cpp
+c:\users\101057906\desktop\n00b_pong\n00b_p0ng\n00b_p0ng\objects.cpp(73): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+  Generating Code...
+  N00B_P0NG.vcxproj -> C:\Users\101057906\Desktop\n00b_pong\N00B_P0NG\Debug\N00B_P0NG.exe

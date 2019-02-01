@@ -1,8 +1,10 @@
-#include "stdafx.h"
 #include "InputHandler.h"
 
-
 InputHandler::InputHandler()
+{
+}
+
+InputHandler::~InputHandler()
 {
 }
 
@@ -42,9 +44,6 @@ void InputHandler::KeyboardHandler(UINT message, WPARAM wParam)
 		break;
 
 	}
-
-
-
 }
 
 void InputHandler::MouseHandler(UINT message, WPARAM wParam)
@@ -83,8 +82,4 @@ void InputHandler::MouseHandler(UINT message, WPARAM wParam)
 		break;
 
 	}
-}
-
-InputHandler::~InputHandler()
-{
 }

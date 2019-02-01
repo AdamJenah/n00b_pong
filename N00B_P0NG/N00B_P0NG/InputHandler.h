@@ -1,8 +1,5 @@
 #pragma once
-#include <windows.h>
-#include <stdlib.h>
-#include <string.h>
-#include <tchar.h>
+#include "NoobClass.h"
 
 class InputHandler
 {
