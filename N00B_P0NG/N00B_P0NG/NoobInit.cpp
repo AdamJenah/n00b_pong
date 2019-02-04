@@ -53,11 +53,13 @@ bool  N00BP0NG::CheckMemory() {
 	GlobalMemoryStatusEx(&status);
 	std::string msgTxt;
 
+	cout << "**********************************************\n" << endl;
 	cout << "Physical & Virtual Memory Check:\n" << endl;
 	cout << "\tRAM Requested: " << physicalRAMNeeded << "." << endl;
 	cout << "\tVirtual RAM Requested: " << virtualRAMNeeded << "." << endl;
 	cout << "\tThe total physical RAM available: " << status.ullAvailPhys << "." << endl;
 	cout << "\tThe total virtual RAM avaialable: " << status.ullAvailVirtual << ".\n" << endl;
+	cout << "**********************************************\n" << endl;
 
 	if (status.ullAvailPhys < physicalRAMNeeded) {
 		cout << "\tMemory Check Failure : Not enough physical memory.\n" << endl;
@@ -125,9 +127,11 @@ bool N00BP0NG::HasFreeDiskSpace()
 		result = false;
 	}
 	else {
+		cout << "**********************************************\n" << endl;
 		cout << "Disk Space Check: \n" << endl;
 		cout << "\tRequested " << requiredSpace << " bytes needed." << endl;
 		cout << "\tThere are " << (DWORDLONG)totalFreeSpaceInMb << " available bytes.\n" << endl;
+		cout << "**********************************************\n" << endl;
 
 		result = true;
 	}

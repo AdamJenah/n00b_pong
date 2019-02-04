@@ -1,7 +1,5 @@
-﻿  Engine.cpp
-  Objects.cpp
-c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\objects.cpp(36): error C2664: 'void sf::RenderTarget::draw(const sf::VertexBuffer &,size_t,size_t,const sf::RenderStates &)': cannot convert argument 1 from 'Objects' to 'const sf::Drawable &'
-  c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\objects.cpp(36): note: Reason: cannot convert from 'Objects' to 'const sf::Drawable'
-  c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\objects.cpp(36): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\objects.cpp(74): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-  Generating Code...
+﻿  Objects.cpp
+c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\objects.cpp(37): error C2664: 'void sf::RenderTarget::draw(const sf::VertexBuffer &,size_t,size_t,const sf::RenderStates &)': cannot convert argument 1 from 'Objects' to 'const sf::Drawable &'
+  c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\objects.cpp(37): note: Reason: cannot convert from 'Objects' to 'const sf::Drawable'
+  c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\objects.cpp(37): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\objects.cpp(75): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data

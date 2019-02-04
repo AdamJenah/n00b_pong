@@ -33,6 +33,7 @@ void Objects::Update(sf::RenderWindow& _window)//WE NEED TO UPDATE EACH OBJECT I
 
 void Objects::DrawObj(sf::RenderWindow& _window, int i)
 {
+
 	_window.draw(*ObjArray[i]);//this is an object not a shape
 }
 
