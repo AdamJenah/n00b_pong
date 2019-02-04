@@ -7,16 +7,16 @@ class Objects
 public:
 	Objects();
 	~Objects();
-	// Create Textures/Images funtion: DrawImage()
-	// Create Rectangle function: DrawRect()
+	// Creates Textures/Images funtion: DrawImage()
+	// Creates Rectangle function: DrawRect()
 	// Creates Circle function: DrawRect()
 	// Creates Text Function: DrawText()
 	// Creates Draw functions for other objects as necessary
 
 	_Transform ObjTransform;
 
-	void Update();
-	Objects Draw();
+	void Update(sf::RenderWindow& _window);
+	void DrawObj(sf::RenderWindow& _window, int i);
 
 	int ObjNum = 0;
 	std::vector <Objects*> ObjArray;//need to create an array of objects

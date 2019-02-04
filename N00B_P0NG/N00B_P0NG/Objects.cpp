@@ -22,17 +22,18 @@ void Objects::RemoveObject(Objects *Index)//use this to remove from array
 	//must swap object to delete, to the top, then pop the object.
 }
 
-void Objects::Update()//WE NEED TO UPDATE EACH OBJECT IN THAT ARRAY AND ALSO ADD A REPEATING UPDATE
+void Objects::Update(sf::RenderWindow& _window)//WE NEED TO UPDATE EACH OBJECT IN THAT ARRAY AND ALSO ADD A REPEATING UPDATE
 {
 	for (int i = 0; i <= ObjNum; i++)
 	{
-		ObjArray[i]->Draw();
+		//update the transform as well
+		ObjArray[i]->DrawObj(_window, i);
 	}
 }
 
-Objects Objects::Draw()//fix
+void Objects::DrawObj(sf::RenderWindow& _window, int i)
 {
-	return *this;
+	_window.draw(*ObjArray[i]);//this is an object not a shape
 }
 
 sf::RectangleShape Objects::Rectangle2D(float TL, float BR, float PX, float PY, float Angle, sf::Color _color)//figure out difference between size/radius and scale
