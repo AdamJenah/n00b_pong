@@ -1,29 +1,40 @@
 #include "NoobInit.h"
-
+#include "SceneManager.h"
 using namespace std;
 
 N00BP0NG::N00BP0NG()
 {
-
-
 }
 
 N00BP0NG::~N00BP0NG()
 {
-
 }
 
-void N00BP0NG::Run(sf::RenderWindow Window)
+void N00BP0NG::Run()
 {
-	while (Window.isOpen())
+	HasFreeDiskSpace();
+	ReadCPUSpeed();
+	CheckMemory();
+
+	SceneManager SceneM;
+	sf::RenderWindow window(sf::VideoMode(1000, 800), "SFML works!");
+
+	SceneM.Scene();
+
+	while (window.isOpen())
 	{
 		sf::Event event;
-		while (Window.pollEvent(event))
+		while (window.pollEvent(event))
 		{
+			// update all game engine systems
 			if (event.type == sf::Event::Closed)
 			{
-				Window.close();
+				window.close();
 			}
+
+			window.clear();
+			SceneM.UpdateObj(window);
+			window.display();
 		}
 	}
 }

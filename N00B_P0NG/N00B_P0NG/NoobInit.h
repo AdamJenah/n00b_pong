@@ -9,7 +9,7 @@ public:
 
 	bool Initialize();
 
-	void  Run(sf::RenderWindow Window);
+	void  Run();
 	bool  HasFreeDiskSpace();
 	bool ReadCPUSpeed();
 	bool CheckMemory();
