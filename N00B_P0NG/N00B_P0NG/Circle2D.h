@@ -1,6 +1,7 @@
 #pragma once
 #include "NoobClass.h"
 #include "_Transform.h"
+#include "BaseComponent.h"
 
 class Circle2D
 {

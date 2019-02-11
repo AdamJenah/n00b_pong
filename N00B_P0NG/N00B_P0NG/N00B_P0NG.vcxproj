@@ -125,12 +125,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="BaseComponent.cpp" />
     <ClCompile Include="Circle2D.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="NoobInit.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="Objects.cpp" />
+    <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Rectangle2D.cpp" />
     <ClCompile Include="SceneManager.cpp" />
@@ -139,12 +142,15 @@
     <ClCompile Include="_Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ball.h" />
     <ClInclude Include="base.h" />
+    <ClInclude Include="BaseComponent.h" />
     <ClInclude Include="Circle2D.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="NoobInit.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Objects.h" />
+    <ClInclude Include="Paddle.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="Rectangle2D.h" />
     <ClInclude Include="SceneManager.h" />

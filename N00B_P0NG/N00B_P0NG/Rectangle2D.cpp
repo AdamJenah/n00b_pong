@@ -12,7 +12,7 @@ sf::RectangleShape Rectangle2D::MyRect2D(float TL, float BR, float PX, float PY,
 {
 	sf::RectangleShape temp;
 	temp.setSize(sf::Vector2f(TL, BR));
-	temp.setOrigin(TL / 2, BR / 2);
+	temp.setOrigin(ObjTransform.GetSca().x / 2, ObjTransform.GetSca().y / 2);
 	temp.setFillColor(_color);
 	ObjTransform.SetPos(PX, PY);
 	ObjTransform.SetRot(Angle, PX, PY);

@@ -8,15 +8,6 @@ Objects::~Objects()
 {
 }
 
-void Objects::draw(sf::RenderTarget &target, sf::RenderStates states) const
+void Objects::Update(sf::RenderWindow & _window, sf::Time elapsedTime, sf::Sprite _sprite)
 {
-	//std::cout << "Drawing" << std::endl;
-	target.draw(*this, sf::RenderStates::Default);
-	
-}
-
-void Objects::Update(sf::RenderWindow& _window)//WE NEED TO UPDATE EACH OBJECT IN THAT ARRAY
-{
-	//update the transform as well
-	draw(_window, sf::RenderStates::Default);
 }

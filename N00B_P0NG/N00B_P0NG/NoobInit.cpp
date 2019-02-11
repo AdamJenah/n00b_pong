@@ -1,5 +1,6 @@
 #include "NoobInit.h"
 #include "SceneManager.h"
+#include "InputHandler.h"
 using namespace std;
 
 N00BP0NG::N00BP0NG()
@@ -17,24 +18,42 @@ void N00BP0NG::Run()
 	CheckMemory();
 
 	SceneManager SceneM;
+	InputHandler InputH;
 	sf::RenderWindow window(sf::VideoMode(1000, 800), "SFML works!");
 
 	SceneM.Scene();
 
+
+	sf::Clock clock;//Create Clock Variable
+	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	while (window.isOpen())
 	{
+		sf::Time elapsedTime = clock.restart();//gets delta time
+		timeSinceLastUpdate += elapsedTime;
 		sf::Event event;
+		while (timeSinceLastUpdate > FrameTime)
+		{
+
+			timeSinceLastUpdate -= FrameTime;
+			window.clear();
+			SceneM.UpdateObj(window, FrameTime);//updates all objects
+			window.display();
+		}
 		while (window.pollEvent(event))
 		{
-			// update all game engine systems
-			if (event.type == sf::Event::Closed)
+			switch (event.type)
 			{
+			case sf::Event::Closed:
 				window.close();
+				break;
+				//KEYBOARD PRESSED AND RELEASED EVENTS INITIALIZE
+			case sf::Event::KeyPressed:
+				InputH.handlePlayerInput(event.key.code, true);
+				break;
+			case sf::Event::KeyReleased:
+				InputH.handlePlayerInput(event.key.code, false);
+				break;
 			}
-
-			window.clear();
-			SceneM.UpdateObj(window);
-			window.display();
 		}
 	}
 }
@@ -121,7 +140,6 @@ bool N00BP0NG::ReadCPUSpeed() {
 
 bool N00BP0NG::HasFreeDiskSpace()
 {
-
 	bool result = false;
 	int requiredSpace = 300; //program space spec requirement in MB.
 	ULARGE_INTEGER ulFreeSpace;

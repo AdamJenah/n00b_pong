@@ -12,6 +12,7 @@ sf::CircleShape Circle2D::MyCircle2D(float Radius, float PX, float PY, float Ang
 {
 	sf::CircleShape temp;
 	temp.setRadius(Radius);
+	temp.setOrigin(Radius / 2, Radius / 2);
 	temp.setFillColor(_color);
 	ObjTransform.SetPos(PX, PY);
 	ObjTransform.SetRot(Angle, PX, PY);
