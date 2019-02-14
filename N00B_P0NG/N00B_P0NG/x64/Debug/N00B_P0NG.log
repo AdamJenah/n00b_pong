@@ -1,0 +1,33 @@
+﻿  Ball.cpp
+d:\github\n00b_pong\n00b_p0ng\n00b_p0ng\ball.h(5): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  BaseComponent.cpp
+d:\github\n00b_pong\n00b_p0ng\n00b_p0ng\noobclass.h(3): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Circle2D.cpp
+d:\github\n00b_pong\n00b_p0ng\n00b_p0ng\noobclass.h(3): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Collision.cpp
+d:\github\n00b_pong\n00b_p0ng\n00b_p0ng\noobclass.h(3): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Engine.cpp
+d:\github\n00b_pong\n00b_p0ng\n00b_p0ng\noobclass.h(3): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Game.cpp
+d:\github\n00b_pong\n00b_p0ng\n00b_p0ng\noobclass.h(3): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  NoobInit.cpp
+d:\github\n00b_pong\n00b_p0ng\n00b_p0ng\noobclass.h(3): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  InputHandler.cpp
+d:\github\n00b_pong\n00b_p0ng\n00b_p0ng\noobclass.h(3): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Objects.cpp
+d:\github\n00b_pong\n00b_p0ng\n00b_p0ng\noobclass.h(3): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Paddle.cpp
+d:\github\n00b_pong\n00b_p0ng\n00b_p0ng\paddle.h(3): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Physics.cpp
+d:\github\n00b_pong\n00b_p0ng\n00b_p0ng\noobclass.h(3): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Rectangle2D.cpp
+d:\github\n00b_pong\n00b_p0ng\n00b_p0ng\noobclass.h(3): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  SceneManager.cpp
+d:\github\n00b_pong\n00b_p0ng\n00b_p0ng\noobclass.h(3): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Sprite2D.cpp
+d:\github\n00b_pong\n00b_p0ng\n00b_p0ng\noobclass.h(3): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Text2D.cpp
+d:\github\n00b_pong\n00b_p0ng\n00b_p0ng\noobclass.h(3): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  _Transform.cpp
+d:\github\n00b_pong\n00b_p0ng\n00b_p0ng\noobclass.h(3): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Generating Code...
