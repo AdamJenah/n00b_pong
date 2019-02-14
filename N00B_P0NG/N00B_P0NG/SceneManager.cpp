@@ -9,7 +9,7 @@ SceneManager::~SceneManager()
 {
 }
 
-void SceneManager::LoadTextures()
+/*void SceneManager::LoadTextures()
 {
 	if (!_texture.loadFromFile("TEST_TEXTURE.jpg", sf::IntRect(10, 10, 32, 32)))
 	{
@@ -50,5 +50,7 @@ void SceneManager::RemoveObject(Objects * Index)
 	//must swap object to delete, to the top, then pop the object.
 	sceneObjects.pop_back();
 }
+
+*/
 
 

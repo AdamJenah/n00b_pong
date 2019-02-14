@@ -1,15 +1,2 @@
-﻿  BaseComponent.cpp
-  NoobInit.cpp
-c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\noobinit.cpp(152): warning C4244: 'initializing': conversion from 'ULONGLONG' to 'int', possible loss of data
-  SceneManager.cpp
-c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\scenemanager.cpp(29): error C2660: 'Sprite2D::MySprite2D': function does not take 5 arguments
-  c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\sprite2d.h(12): note: see declaration of 'Sprite2D::MySprite2D'
-c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\scenemanager.cpp(30): error C2146: syntax error: missing ';' before identifier 'AddObject'
-c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\scenemanager.cpp(30): error C2664: 'void SceneManager::AddObject(Objects *)': cannot convert argument 1 from 'Sprite2D *' to 'Objects *'
-  c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\scenemanager.cpp(30): note: Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
-c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\scenemanager.cpp(31): error C2039: 'MyCircle': is not a member of 'Objects'
-  c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\objects.h(5): note: see declaration of 'Objects'
-c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\scenemanager.cpp(39): error C2660: 'Objects::Update': function does not take 2 arguments
-  c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\objects.h(13): note: see declaration of 'Objects::Update'
-  Sprite2D.cpp
-  Generating Code...
+﻿  Game.cpp
+  N00B_P0NG.vcxproj -> D:\GitHub\n00b_pong\N00B_P0NG\Debug\N00B_P0NG.exe

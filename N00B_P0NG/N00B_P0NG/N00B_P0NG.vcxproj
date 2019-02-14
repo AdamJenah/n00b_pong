@@ -130,6 +130,7 @@
     <ClCompile Include="Circle2D.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="NoobInit.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="Objects.cpp" />
@@ -145,8 +146,10 @@
     <ClInclude Include="Ball.h" />
     <ClInclude Include="base.h" />
     <ClInclude Include="BaseComponent.h" />
+    <ClInclude Include="Book\StringHelpers.hpp" />
     <ClInclude Include="Circle2D.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="NoobInit.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Objects.h" />
@@ -159,6 +162,14 @@
     <ClInclude Include="NoobClass.h" />
     <ClInclude Include="Text2D.h" />
     <ClInclude Include="_Transform.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Book\StringHelpers.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="background.jpg" />
+    <Image Include="icon.png" />
+    <Image Include="paddle.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

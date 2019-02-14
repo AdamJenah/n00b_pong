@@ -1,6 +1,8 @@
 #include "NoobInit.h"
 #include "SceneManager.h"
 #include "InputHandler.h"
+#include "Game.h"
+
 using namespace std;
 
 N00BP0NG::N00BP0NG()
@@ -17,13 +19,15 @@ void N00BP0NG::Run()
 	ReadCPUSpeed();
 	CheckMemory();
 
-	SceneManager SceneM;
-	InputHandler InputH;
-	sf::RenderWindow window(sf::VideoMode(1000, 800), "SFML works!");
+	Game game;
+	game.run();
+	//SceneManager SceneM;
+	//InputHandler InputH;
+	//sf::RenderWindow window(sf::VideoMode(1000, 800), "SFML works!");
 
-	SceneM.Scene();
+	//SceneM.Scene();
 
-
+	/*
 	sf::Clock clock;//Create Clock Variable
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	while (window.isOpen())
@@ -56,6 +60,7 @@ void N00BP0NG::Run()
 			}
 		}
 	}
+	*/
 }
 
 bool N00BP0NG::Initialize()
