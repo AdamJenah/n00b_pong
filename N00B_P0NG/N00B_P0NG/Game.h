@@ -30,7 +30,7 @@ private:
 	sf::Sprite mBackground;
 	sf::Texture mTexture;
 	sf::Texture mPaddle;
-
+	sf::RectangleShape mPlayer1;
 	sf::RectangleShape mPlayer2;
 	sf::RenderWindow mWindow;
 
