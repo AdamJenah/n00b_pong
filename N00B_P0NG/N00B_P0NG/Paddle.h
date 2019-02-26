@@ -16,6 +16,7 @@ private:
 	sf::RectangleShape Ball;
 
 	sf::RectangleShape mPlayer2;
+	sf::RectangleShape mPlayer1;
 
 	void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);//Makes program handle player inputs
 	void update(sf::Time deltaTime);

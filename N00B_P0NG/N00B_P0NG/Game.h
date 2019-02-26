@@ -32,6 +32,8 @@ private:
 	sf::Texture mPaddle;
 	sf::RectangleShape mPlayer1;
 	sf::RectangleShape mPlayer2;
+	sf::RectangleShape splashscreen;
+	sf::Text splashText;
 	sf::RenderWindow mWindow;
 
 	//sf::Font mFont;//required to type out text 
@@ -47,8 +49,11 @@ private:
 	bool mIsMovingDown;
 	bool mIsMovingRight;
 	bool mIsMovingLeft;
+	bool splash;
 
 	float PlayerSpeed;//Initializes PlayerSpeed
+	float PlayerSpeed2;
+	float timer;
 	static const sf::Time FrameTime;//Initializes frame time
 
 	int Score;

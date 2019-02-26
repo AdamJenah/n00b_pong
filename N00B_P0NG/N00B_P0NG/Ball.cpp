@@ -54,6 +54,5 @@ void Ball::update(sf::Time elapsedTime)//update is set by time thanks to the par
 		increment.y = -increment.y;
 		Score++;
 	}
-
 	Ball1.setPosition(Ball1.getPosition() + increment);
 }
