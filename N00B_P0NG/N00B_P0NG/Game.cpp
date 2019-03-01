@@ -25,9 +25,30 @@ Game::Game()
 	, Lives(3)
 	, PlayerSpeed(300.0f)
 	, PlayerSpeed2(300.0f)
+	, MenuSound()
+	, GameSound()
 #pragma endregion
 
 {
+	
+	if (!MenuSound.loadFromFile("$(SolutionDir)\Assets\MenuGroove.mp3"))//fix paths
+	{
+		// error...
+	}
+	else
+	{
+		SoundBuffer.setBuffer(MenuSound);
+	}
+	if (!GameSound.loadFromFile("Desktop\n00b_pong\Assets\SpaceGroove.mp3"))
+	{
+		// error...
+	}
+	else
+	{
+		SoundBuffer2.setBuffer(GameSound);
+	}
+	SoundBuffer.setLoop(true);
+	SoundBuffer.play();
 
 	Ball.setPosition(0.f, 10.f);//changes position of the circle
 	Ball.setFillColor(sf::Color::Red);//Sets the color of the circle
@@ -151,6 +172,9 @@ void Game::update(sf::Time elapsedTime)//update is set by time thanks to the par
 		}
 		else
 		{
+			SoundBuffer.stop();
+			SoundBuffer2.setLoop(true);
+			SoundBuffer2.play();
 			splash = true;
 		}
 	}

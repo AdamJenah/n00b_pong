@@ -34,6 +34,10 @@ private:
 	sf::RectangleShape mPlayer2;
 	sf::RectangleShape splashscreen;
 	sf::Text splashText;
+	sf::SoundBuffer MenuSound;
+	sf::SoundBuffer GameSound;
+	sf::Sound SoundBuffer;
+	sf::Sound SoundBuffer2;
 	sf::RenderWindow mWindow;
 
 	//sf::Font mFont;//required to type out text 
