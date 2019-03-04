@@ -31,7 +31,7 @@ Game::Game()
 
 {
 	
-	if (!MenuSound.loadFromFile("$(SolutionDir)\Assets\MenuGroove.mp3"))//fix paths
+	/*if (!MenuSound.loadFromFile("$(SolutionDir)\Assets\MenuGroove.wav"))//fix paths
 	{
 		// error...
 	}
@@ -39,14 +39,14 @@ Game::Game()
 	{
 		SoundBuffer.setBuffer(MenuSound);
 	}
-	if (!GameSound.loadFromFile("Desktop\n00b_pong\Assets\SpaceGroove.mp3"))
+	if (!GameSound.loadFromFile("$(SolutionDir)\Assets\SpaceGroove.wav"))
 	{
 		// error...
 	}
 	else
 	{
 		SoundBuffer2.setBuffer(GameSound);
-	}
+	}*/
 	SoundBuffer.setLoop(true);
 	SoundBuffer.play();
 

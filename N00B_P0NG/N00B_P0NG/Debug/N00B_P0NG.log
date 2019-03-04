@@ -1,12 +1,12 @@
 ﻿  Game.cpp
-c:\users\user\desktop\n00b_pong\n00b_p0ng\n00b_p0ng\game.cpp(62): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\game.cpp(83): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=unsigned int
           ]
-c:\users\user\desktop\n00b_pong\n00b_p0ng\n00b_p0ng\game.cpp(68): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\game.cpp(89): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=unsigned int
           ]
-  N00B_P0NG.vcxproj -> C:\Users\User\Desktop\n00b_pong\N00B_P0NG\Debug\N00B_P0NG.exe
+  N00B_P0NG.vcxproj -> C:\Users\101057906\Documents\GitHub\n00b_pong\N00B_P0NG\Debug\N00B_P0NG.exe
