@@ -31,22 +31,24 @@ Game::Game()
 
 {
 	
-	/*if (!MenuSound.loadFromFile("$(SolutionDir)\Assets\MenuGroove.wav"))//fix paths
+	if (!MenuSound.loadFromFile("MenuGroove.wav"))//fix paths
 	{
 		// error...
 	}
 	else
 	{
+		MenuSound.loadFromFile("MenuGroove.wav");
 		SoundBuffer.setBuffer(MenuSound);
 	}
-	if (!GameSound.loadFromFile("$(SolutionDir)\Assets\SpaceGroove.wav"))
+	if (!MenuSound.loadFromFile("SpaceGroove.wav"))
 	{
 		// error...
 	}
 	else
 	{
+		MenuSound.loadFromFile("SpaceGroove.wav");
 		SoundBuffer2.setBuffer(GameSound);
-	}*/
+	}
 	SoundBuffer.setLoop(true);
 	SoundBuffer.play();
 
