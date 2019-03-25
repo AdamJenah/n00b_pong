@@ -34,6 +34,7 @@ private:
 	sf::RectangleShape mPlayer2;
 	sf::RectangleShape splashscreen;
 	sf::Text splashText;
+	sf::Font font;
 	sf::SoundBuffer MenuSound;
 	sf::SoundBuffer GameSound;
 	sf::Sound SoundBuffer;

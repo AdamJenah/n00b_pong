@@ -21,13 +21,14 @@ void N00BP0NG::Run()
 
 	Game game;
 	game.run();
-	//SceneManager SceneM;
-	//InputHandler InputH;
-	//sf::RenderWindow window(sf::VideoMode(1000, 800), "SFML works!");
-
-	//SceneM.Scene();
-
 	/*
+	SceneManager SceneM;
+	InputHandler InputH;
+	sf::RenderWindow window(sf::VideoMode(1000, 800), "SFML works!");
+
+	SceneM.Scene();
+
+
 	sf::Clock clock;//Create Clock Variable
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	while (window.isOpen())
@@ -40,7 +41,7 @@ void N00BP0NG::Run()
 
 			timeSinceLastUpdate -= FrameTime;
 			window.clear();
-			SceneM.UpdateObj(window, FrameTime);//updates all objects
+			SceneM.UpdateObj(FrameTime, window);//updates all objects
 			window.display();
 		}
 		while (window.pollEvent(event))

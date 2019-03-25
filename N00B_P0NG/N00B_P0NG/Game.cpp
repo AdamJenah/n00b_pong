@@ -30,23 +30,29 @@ Game::Game()
 #pragma endregion
 
 {
-	
-	if (!MenuSound.loadFromFile("MenuGroove.wav"))//fix paths
+	if (!font.loadFromFile("Assets/ArialCE.ttf"))//fix paths
 	{
-		// error...
+		std::cout << "Failed to Load" << std::endl;
 	}
 	else
 	{
-		MenuSound.loadFromFile("MenuGroove.wav");
+		splashText.setFont(font);
+	}
+
+	if (!MenuSound.loadFromFile("Assets/MenuGroove.wav"))//fix paths
+	{
+		std::cout << "Failed to Load" << std::endl;
+	}
+	else
+	{
 		SoundBuffer.setBuffer(MenuSound);
 	}
-	if (!MenuSound.loadFromFile("SpaceGroove.wav"))
+	if (!MenuSound.loadFromFile("Assets/SpaceGroove.wav"))
 	{
-		// error...
+		std::cout << "Failed to Load" << std::endl;
 	}
 	else
 	{
-		MenuSound.loadFromFile("SpaceGroove.wav");
 		SoundBuffer2.setBuffer(GameSound);
 	}
 	SoundBuffer.setLoop(true);
@@ -86,9 +92,9 @@ Game::Game()
 	splashscreen.setPosition(0, 0);
 	splashscreen.setFillColor(sf::Color::Cyan);
 	splashText.setString("Splash Screen");
-	splashText.setCharacterSize(40);
+	splashText.setCharacterSize(30);
 	splashText.setFillColor(sf::Color::Black);
-	splashText.setPosition(mWindow.getSize().x / 2, mWindow.getSize().y / 2);
+	splashText.setPosition((mWindow.getSize().x / 2) - 30, mWindow.getSize().y / 2);
 	/*
 	if (!mTexture.loadFromFile("background.jpg"))
 		return;
@@ -279,8 +285,8 @@ void Game::render()
 //	mWindow.draw(mText);//Actually draws the text
 	if (splash == false)
 	{
-		mWindow.draw(splashText);
 		mWindow.draw(splashscreen);
+		mWindow.draw(splashText);
 	}
 	else
 	{

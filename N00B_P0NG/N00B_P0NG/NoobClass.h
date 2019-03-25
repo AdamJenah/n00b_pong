@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <iostream>
+#include <list>
 #include <direct.h>
 #include <string>
 #include "base.h"

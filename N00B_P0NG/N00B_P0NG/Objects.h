@@ -1,13 +1,21 @@
 #pragma once
 #include "NoobClass.h"
-#include "BaseComponent.h"
+#include "BaseComponent.h" 
+#include "_Transform.h"
 
+class BaseComponent;
 class Objects
 {
 public:
 	Objects();
 	~Objects();
 
-	void Update(sf::RenderWindow& _window, sf::Time elapsedTime, sf::Sprite _sprite);
+	void AddComponent(BaseComponent* component);
+	_Transform* transform;
+	void Start();
+	void Update(float msec, sf::RenderWindow &window);
+
+private:
+	std::list<BaseComponent*> components;
 };
 

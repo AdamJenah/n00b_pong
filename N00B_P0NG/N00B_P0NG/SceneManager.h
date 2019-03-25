@@ -9,16 +9,15 @@ public:
 	SceneManager();
 	~SceneManager();
 
-	Sprite2D test_0;
 	Objects test_1;
-
+	//BaseComponent test;
 	std::vector <Objects*> sceneObjects;
 	int ObjNum = 0;
 	sf::Texture _texture;
 
 	void LoadTextures();
 	void Scene();
-	void UpdateObj(sf::RenderWindow& _window, sf::Time elapsedTime);
+	void UpdateObj(sf::Time elapsedTime, sf::RenderWindow& _window);
 	void AddObject(Objects *pushObj);
 	void RemoveObject(Objects *Index);
 };

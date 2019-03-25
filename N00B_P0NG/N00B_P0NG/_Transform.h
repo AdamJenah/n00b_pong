@@ -5,6 +5,7 @@ class _Transform
 {
 public:
 	_Transform();
+	_Transform(float x, float y);
 	~_Transform();
 	
 	sf::Transform _Matrix;

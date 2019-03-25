@@ -4,6 +4,11 @@ _Transform::_Transform()
 {
 }
 
+_Transform::_Transform(float x, float y)
+{
+	SetPos(x , y);
+}
+
 _Transform::~_Transform()
 {
 }
