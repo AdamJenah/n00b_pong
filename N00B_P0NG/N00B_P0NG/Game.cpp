@@ -7,7 +7,6 @@
 const sf::Time Game::FrameTime = sf::seconds(1.0f / 60.f);//Sets it to 60 frames per second after initialized in hpp.
 
 Game::Game()
-#pragma region Step2
 	: mWindow(sf::VideoMode(800, 700), "N00B P0NG", sf::Style::Close)
 	, mGameBackground()
 	, mBackground()
@@ -33,8 +32,6 @@ Game::Game()
 	, GameSound()
 	, Player1Text()
 	, Player2Text()
-
-#pragma endregion
 
 {
 	if (!font.loadFromFile("Assets/ArialCE.ttf"))
@@ -108,37 +105,12 @@ Game::Game()
 	mBall.setPosition(0.f, 10.f);//changes position of the circle
 	mBall.setSize(sf::Vector2f(20,20));
 
-
-	//SETS TEXT
-	/*if (!mFont.loadFromFile("Media/STENCIL.ttf")) return;//REQUIRED TO SET TEXT BY LOADING THE FONT
-	mText.setFont(mFont);//Set the font
-	mText.setString("HelloWorld");//Set the words in the text
-	mText.setPosition(700, 0);//Set the Position of the text
-	mText.setCharacterSize(20);//Set the size of the text
-	mText.setFillColor(sf::Color::Red);//Set the color of the text
-
-	mStatisticsText.setFont(mFont);//Set the font
-	mStatisticsText.setPosition(0, 0);//Set the Position of the text
-	mStatisticsText.setCharacterSize(20);//Set the size of the text
-	mStatisticsText.setFillColor(sf::Color::Red);//Set the color of the text
-	mStatisticsText.setString("Frame Rate");
-	*/
-
-	/*
-	//SETS PROGRAM ICON AS AN IMAGE
-	if (!mIcon.loadFromFile("icon.png")) return;//REQUIRED TO SET PROGRAM ICON BY LOADING THE IMAGE
-	mWindow.setIcon(mIcon.getSize().x, mIcon.getSize().y, mIcon.getPixelsPtr());//Set the icon size by getting the x and y values.
-
-	*/
-#pragma region Step3
 	mPlayer2.setPosition(775.0f, 0.f);
 	mPlayer2.setScale(.5, 1);
 	mPlayer1.setPosition(25.0f, 0.f);
 	mPlayer1.setScale(.5, 1);
-	//splashscreen.setScale(mWindow.getSize().x, mWindow.getSize().y);
 	splashscreen.setSize(sf::Vector2f(mWindow.getSize().x, mWindow.getSize().y));
 	splashscreen.setPosition(0, 0);
-	//Gamescreen.setScale(mWindow.getSize().x, mWindow.getSize().y);
 	Gamescreen.setSize(sf::Vector2f(mWindow.getSize().x, mWindow.getSize().y));
 	Gamescreen.setPosition(0, 0);
 	splashText.setString("Splash Screen");
@@ -153,17 +125,6 @@ Game::Game()
 	Player2Text.setCharacterSize(20);
 	Player2Text.setFillColor(sf::Color::Red);
 	Player2Text.setPosition(mWindow.getSize().x - 180, 10);
-	/*
-	if (!mTexture.loadFromFile("background.jpg"))
-		return;
-	mTexture.setRepeated(true);
-	mBackground.setTexture(mTexture);
-	// Define a rectangle, located at (0, 0) with a size of 800X600
-	//Comment out the following section to see the difference
-	mBackground.setTextureRect(sf::IntRect(0, 0, 1200, 700));
-	*/
-
-#pragma endregion
 }
 
 void Game::run()
@@ -297,14 +258,14 @@ void Game::update(sf::Time elapsedTime)//update is set by time thanks to the par
 		if (mBall.getPosition().x - (size.x / 2) < 0 && increment.x < 0)
 		{
 			mBall.setPosition(400.f, 10.f);
-			Lives1--;//which player?
+			Lives1--;
 			Player1Text.setString("Player 1 Lives: " + std::to_string(Lives1));
 		}
 
 		if (mBall.getPosition().x + (size.x / 2) > mWindow.getSize().x && increment.x > 0)
 		{
 			mBall.setPosition(400.f, 10.f);
-			Lives2--;//which player?
+			Lives2--;
 			Player2Text.setString("Player 2 Lives: " + std::to_string(Lives2));
 		}
 
@@ -341,8 +302,6 @@ void Game::render()
 {
 	mWindow.clear();
 
-#pragma region Step4
-//	mWindow.draw(mText);//Actually draws the text
 	if (splash == false)
 	{
 		mWindow.draw(splashscreen);
@@ -358,10 +317,6 @@ void Game::render()
 		mWindow.draw(Player2Text);
 	}
 	mWindow.display();
-
-//	mWindow.draw(mStatisticsText);
-#pragma endregion
-
 }
 
 void Game::updateStatistics(sf::Time elapsedTime)
@@ -371,13 +326,6 @@ void Game::updateStatistics(sf::Time elapsedTime)
 
 	if (mStatisticsUpdateTime >= sf::seconds(1.0f))
 	{
-		//mStatisticsText.setString(
-			//"Frames/Second = " + toString(mStatisticsNumFrames)
-			//+ "\n" +
-			//"Time / Update = " +
-			//toString(mStatisticsUpdateTime.asMicroseconds()
-			//	/ mStatisticsNumFrames) + "us");
-
 		mStatisticsUpdateTime -= sf::seconds(1.0f);
 		mStatisticsNumFrames = 0;
 	}

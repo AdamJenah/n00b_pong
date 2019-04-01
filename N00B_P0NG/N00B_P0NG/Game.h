@@ -24,9 +24,6 @@ private:
 
 
 	sf::RectangleShape mBall;
-
-
-#pragma region Step 1
 	sf::Texture mBackground;
 	sf::Texture mGameBackground;
 	sf::Texture mPaddle;
@@ -72,7 +69,5 @@ private:
 	//sf::Text mStatisticsText;//ADDS STATISTICS TEXT
 	sf::Time mStatisticsUpdateTime;//ADDS THE FUNCTION FOR STATISTICS TO UPDATE
 	std::size_t	mStatisticsNumFrames;
-#pragma endregion
-
 };
 
