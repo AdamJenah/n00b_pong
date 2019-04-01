@@ -166,11 +166,6 @@
   <ItemGroup>
     <None Include="Book\StringHelpers.inl" />
   </ItemGroup>
-  <ItemGroup>
-    <Image Include="background.jpg" />
-    <Image Include="icon.png" />
-    <Image Include="paddle.png" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

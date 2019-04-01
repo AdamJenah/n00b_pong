@@ -9,12 +9,13 @@ const sf::Time Game::FrameTime = sf::seconds(1.0f / 60.f);//Sets it to 60 frames
 Game::Game()
 #pragma region Step2
 	: mWindow(sf::VideoMode(800, 700), "N00B P0NG", sf::Style::Close)
-	, mTexture()
+	, mGameBackground()
 	, mBackground()
 	, Ball(sf::Vector2f(15.0f, 15.0f))
 	, mPlayer2(sf::Vector2f(25.0f, 100.0f))
 	, mPlayer1(sf::Vector2f(25.0f, 100.0f))
 	, splashscreen(sf::Vector2f(25.0f, 100.0f))
+	, Gamescreen(sf::Vector2f(25.0f, 100.0f))
 	, splashText()
 	, splash(false)
 	, timer(5)
@@ -22,11 +23,15 @@ Game::Game()
 	, mIsMovingRight(false)
 	, increment(3.0f, 3.0f)
 	, Score(0)
-	, Lives(3)
+	, Lives1(3)
+	, Lives2(3)
 	, PlayerSpeed(300.0f)
 	, PlayerSpeed2(300.0f)
 	, MenuSound()
 	, GameSound()
+	, Player1Text()
+	, Player2Text()
+
 #pragma endregion
 
 {
@@ -37,6 +42,8 @@ Game::Game()
 	else
 	{
 		splashText.setFont(font);
+		Player1Text.setFont(font);
+		Player2Text.setFont(font);
 	}
 
 	if (!MenuSound.loadFromFile("Assets/MenuGroove.wav"))//fix paths
@@ -54,6 +61,24 @@ Game::Game()
 	else
 	{
 		SoundBuffer2.setBuffer(GameSound);
+	}
+	if (!mBackground.loadFromFile("Assets/background.jpg"))
+	{
+		std::cout << "Failed to Load" << std::endl;
+	}
+	else
+	{
+		splashscreen.setTexture(&mBackground, false);
+		mBackground.setRepeated(true);
+	}
+	if (!mGameBackground.loadFromFile("Assets/Gamebackground.jpg"))
+	{
+		std::cout << "Failed to Load" << std::endl;
+	}
+	else
+	{
+		Gamescreen.setTexture(&mGameBackground, false);
+		mGameBackground.setRepeated(true);
 	}
 	SoundBuffer.setLoop(true);
 	SoundBuffer.play();
@@ -88,13 +113,24 @@ Game::Game()
 	mPlayer2.setScale(.5, 1);
 	mPlayer1.setPosition(25.0f, 0.f);
 	mPlayer1.setScale(.5, 1);
-	splashscreen.setScale(mWindow.getSize().x, mWindow.getSize().y);
+	//splashscreen.setScale(mWindow.getSize().x, mWindow.getSize().y);
+	splashscreen.setSize(sf::Vector2f(mWindow.getSize().x, mWindow.getSize().y));
 	splashscreen.setPosition(0, 0);
-	splashscreen.setFillColor(sf::Color::Cyan);
+	//Gamescreen.setScale(mWindow.getSize().x, mWindow.getSize().y);
+	Gamescreen.setSize(sf::Vector2f(mWindow.getSize().x, mWindow.getSize().y));
+	Gamescreen.setPosition(0, 0);
 	splashText.setString("Splash Screen");
 	splashText.setCharacterSize(30);
-	splashText.setFillColor(sf::Color::Black);
-	splashText.setPosition((mWindow.getSize().x / 2) - 30, mWindow.getSize().y / 2);
+	splashText.setFillColor(sf::Color::Red);
+	splashText.setPosition((mWindow.getSize().x / 2) - 90, mWindow.getSize().y - 90 / 2);
+	Player1Text.setString("Player 1 Lives: " + std::to_string(Lives1));
+	Player1Text.setCharacterSize(20);
+	Player1Text.setFillColor(sf::Color::Red);
+	Player1Text.setPosition(10, 10);
+	Player2Text.setString("Player 2 Lives: " + std::to_string(Lives2));
+	Player2Text.setCharacterSize(20);
+	Player2Text.setFillColor(sf::Color::Red);
+	Player2Text.setPosition(mWindow.getSize().x - 180, 10);
 	/*
 	if (!mTexture.loadFromFile("background.jpg"))
 		return;
@@ -239,13 +275,15 @@ void Game::update(sf::Time elapsedTime)//update is set by time thanks to the par
 		if (Ball.getPosition().x - (size.x / 2) < 0 && increment.x < 0)
 		{
 			Ball.setPosition(400.f, 10.f);
-			Lives--;
+			Lives1--;//which player?
+			Player1Text.setString("Player 1 Lives: " + std::to_string(Lives1));
 		}
 
 		if (Ball.getPosition().x + (size.x / 2) > mWindow.getSize().x && increment.x > 0)
 		{
 			Ball.setPosition(400.f, 10.f);
-			Lives--;
+			Lives2--;//which player?
+			Player2Text.setString("Player 2 Lives: " + std::to_string(Lives2));
 		}
 
 		Ball.setPosition(Ball.getPosition() + increment);
@@ -290,9 +328,12 @@ void Game::render()
 	}
 	else
 	{
+		mWindow.draw(Gamescreen);
 		mWindow.draw(mPlayer2);
 		mWindow.draw(mPlayer1);
 		mWindow.draw(Ball);
+		mWindow.draw(Player1Text);
+		mWindow.draw(Player2Text);
 	}
 	mWindow.display();
 
@@ -323,18 +364,6 @@ void Game::updateStatistics(sf::Time elapsedTime)
 
 void Game::updateUI(sf::Time elapsedTime)
 {
-	/*if (Lives > -2) {
-		mText.setString(
-			"Score:" + toString(Score)
-			+ "\n" +
-			"Lives" + toString(Lives));
-		if (Lives == 0)
-		{
-			Lives = 3;
-			Score = 0;
-
-		}
-
-	}*/
+	//add timer
 
 }

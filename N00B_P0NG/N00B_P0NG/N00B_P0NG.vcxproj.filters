@@ -128,15 +128,4 @@
       <Filter>Header Files</Filter>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Image Include="background.jpg">
-      <Filter>Header Files</Filter>
-    </Image>
-    <Image Include="icon.png">
-      <Filter>Header Files</Filter>
-    </Image>
-    <Image Include="paddle.png">
-      <Filter>Header Files</Filter>
-    </Image>
-  </ItemGroup>
 </Project>

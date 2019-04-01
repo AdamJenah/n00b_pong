@@ -27,13 +27,16 @@ private:
 
 
 #pragma region Step 1
-	sf::Sprite mBackground;
-	sf::Texture mTexture;
+	sf::Texture mBackground;
+	sf::Texture mGameBackground;
 	sf::Texture mPaddle;
 	sf::RectangleShape mPlayer1;
 	sf::RectangleShape mPlayer2;
 	sf::RectangleShape splashscreen;
+	sf::RectangleShape Gamescreen;
 	sf::Text splashText;
+	sf::Text Player1Text;
+	sf::Text Player2Text;
 	sf::Font font;
 	sf::SoundBuffer MenuSound;
 	sf::SoundBuffer GameSound;
@@ -62,7 +65,8 @@ private:
 	static const sf::Time FrameTime;//Initializes frame time
 
 	int Score;
-	int Lives;
+	int Lives1;
+	int Lives2;
 
 	//sf::Text mStatisticsText;//ADDS STATISTICS TEXT
 	sf::Time mStatisticsUpdateTime;//ADDS THE FUNCTION FOR STATISTICS TO UPDATE
