@@ -23,13 +23,14 @@ private:
 private:
 
 
-	sf::RectangleShape Ball;
+	sf::RectangleShape mBall;
 
 
 #pragma region Step 1
 	sf::Texture mBackground;
 	sf::Texture mGameBackground;
 	sf::Texture mPaddle;
+	sf::Texture mBallTexture;
 	sf::RectangleShape mPlayer1;
 	sf::RectangleShape mPlayer2;
 	sf::RectangleShape splashscreen;

@@ -11,7 +11,9 @@ Game::Game()
 	: mWindow(sf::VideoMode(800, 700), "N00B P0NG", sf::Style::Close)
 	, mGameBackground()
 	, mBackground()
-	, Ball(sf::Vector2f(15.0f, 15.0f))
+	, mBallTexture()
+	, mPaddle()
+	, mBall(sf::Vector2f(15.0f, 15.0f))
 	, mPlayer2(sf::Vector2f(25.0f, 100.0f))
 	, mPlayer1(sf::Vector2f(25.0f, 100.0f))
 	, splashscreen(sf::Vector2f(25.0f, 100.0f))
@@ -35,7 +37,7 @@ Game::Game()
 #pragma endregion
 
 {
-	if (!font.loadFromFile("Assets/ArialCE.ttf"))//fix paths
+	if (!font.loadFromFile("Assets/ArialCE.ttf"))
 	{
 		std::cout << "Failed to Load" << std::endl;
 	}
@@ -46,7 +48,7 @@ Game::Game()
 		Player2Text.setFont(font);
 	}
 
-	if (!MenuSound.loadFromFile("Assets/MenuGroove.wav"))//fix paths
+	if (!MenuSound.loadFromFile("Assets/MenuGroove.wav"))
 	{
 		std::cout << "Failed to Load" << std::endl;
 	}
@@ -80,11 +82,31 @@ Game::Game()
 		Gamescreen.setTexture(&mGameBackground, false);
 		mGameBackground.setRepeated(true);
 	}
+	if (!mBallTexture.loadFromFile("Assets/Ball.jpg"))
+	{
+		std::cout << "Failed to Load" << std::endl;
+	}
+	else
+	{
+		mBall.setTexture(&mBallTexture, false);
+		mBallTexture.setRepeated(true);
+	}
+	if (!mPaddle.loadFromFile("Assets/Wood.jpg"))
+	{
+		std::cout << "Failed to Load" << std::endl;
+	}
+	else
+	{
+		mPlayer1.setTexture(&mPaddle, false);
+		mPlayer2.setTexture(&mPaddle, false);
+	}
+
+
 	SoundBuffer.setLoop(true);
 	SoundBuffer.play();
 
-	Ball.setPosition(0.f, 10.f);//changes position of the circle
-	Ball.setFillColor(sf::Color::Red);//Sets the color of the circle
+	mBall.setPosition(0.f, 10.f);//changes position of the circle
+	mBall.setSize(sf::Vector2f(20,20));
 
 
 	//SETS TEXT
@@ -265,53 +287,53 @@ void Game::update(sf::Time elapsedTime)//update is set by time thanks to the par
 
 
 		//movement of ball
-		if ((Ball.getPosition().y + (size.y / 2) > mWindow.getSize().y && increment.y > 0) ||
-			(Ball.getPosition().y - (size.y / 2) < 0 && increment.y < 0))
+		if ((mBall.getPosition().y + (size.y / 2) > mWindow.getSize().y && increment.y > 0) ||
+			(mBall.getPosition().y - (size.y / 2) < 0 && increment.y < 0))
 		{
 			//Reverse the direction on X axis
 			increment.y = -increment.y;
 		}
 
-		if (Ball.getPosition().x - (size.x / 2) < 0 && increment.x < 0)
+		if (mBall.getPosition().x - (size.x / 2) < 0 && increment.x < 0)
 		{
-			Ball.setPosition(400.f, 10.f);
+			mBall.setPosition(400.f, 10.f);
 			Lives1--;//which player?
 			Player1Text.setString("Player 1 Lives: " + std::to_string(Lives1));
 		}
 
-		if (Ball.getPosition().x + (size.x / 2) > mWindow.getSize().x && increment.x > 0)
+		if (mBall.getPosition().x + (size.x / 2) > mWindow.getSize().x && increment.x > 0)
 		{
-			Ball.setPosition(400.f, 10.f);
+			mBall.setPosition(400.f, 10.f);
 			Lives2--;//which player?
 			Player2Text.setString("Player 2 Lives: " + std::to_string(Lives2));
 		}
 
-		Ball.setPosition(Ball.getPosition() + increment);
+		mBall.setPosition(mBall.getPosition() + increment);
 
 		//Ball and paddle hit detection
 		//movement of ball
 
-		if ((Ball.getPosition().x + (size.x) > mPlayer2.getPosition().x && increment.x > 0) &&
-			(Ball.getPosition().y + (size.y) > mPlayer2.getPosition().y) &&
-			(Ball.getPosition().y + (size.y) < mPlayer2.getPosition().y + 100) &&
-			(Ball.getPosition().x + (size.x) < mPlayer2.getPosition().x + 10 && increment.x > 0))
+		if ((mBall.getPosition().x + (size.x) > mPlayer2.getPosition().x - 20 && increment.x > 0) &&
+			(mBall.getPosition().y + (size.y) > mPlayer2.getPosition().y) &&
+			(mBall.getPosition().y + (size.y) < mPlayer2.getPosition().y + 100) &&
+			(mBall.getPosition().x + (size.x) < mPlayer2.getPosition().x + 10 && increment.x > 0))
 
 		{
 			increment.x = (increment.x * -1);
 			Score++;
 		}
 
-		if ((Ball.getPosition().x + (size.x) > mPlayer1.getPosition().x && increment.x < 0) &&
-			(Ball.getPosition().y + (size.y) > mPlayer1.getPosition().y) &&
-			(Ball.getPosition().y + (size.y) < mPlayer1.getPosition().y + 100) &&
-			(Ball.getPosition().x + (size.x) < mPlayer1.getPosition().x + 10 && increment.x < 0))
+		if ((mBall.getPosition().x + (size.x) > mPlayer1.getPosition().x && increment.x < 0) &&
+			(mBall.getPosition().y + (size.y) > mPlayer1.getPosition().y) &&
+			(mBall.getPosition().y + (size.y) < mPlayer1.getPosition().y + 100) &&
+			(mBall.getPosition().x + (size.x) < mPlayer1.getPosition().x + 10 && increment.x < 0))
 
 		{
 			increment.x = (increment.x * -1);
 			Score++;
 		}
 
-		Ball.setPosition(Ball.getPosition() + increment);
+		mBall.setPosition(mBall.getPosition() + increment);
 	}
 }
 
@@ -331,7 +353,7 @@ void Game::render()
 		mWindow.draw(Gamescreen);
 		mWindow.draw(mPlayer2);
 		mWindow.draw(mPlayer1);
-		mWindow.draw(Ball);
+		mWindow.draw(mBall);
 		mWindow.draw(Player1Text);
 		mWindow.draw(Player2Text);
 	}

@@ -1,5 +1,5 @@
 ﻿  Game.cpp
-c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\game.cpp(117): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\game.cpp(139): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -8,7 +8,7 @@ c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\game.cpp(117):
           [
               T=float
           ]
-c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\game.cpp(120): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\game.cpp(142): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -17,12 +17,12 @@ c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\game.cpp(120):
           [
               T=float
           ]
-c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\game.cpp(125): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\game.cpp(147): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=unsigned int
           ]
-c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\game.cpp(133): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\game.cpp(155): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=unsigned int
