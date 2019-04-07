@@ -2,58 +2,59 @@
 
 Physics::Physics()
 {
-	////:Ball1(sf::Vector2f(10.0f, 10.0f))
-	//{
-	//	Ball1.setPosition(400.f, 10.f);//changes position of the circle
-	//	Ball1.setFillColor(sf::Color::Yellow);//Sets the color of the circle
-	//}
-
-	// create function for velocity
-	// create functions for other forces as needed
 }
-	Physics::~Physics()
-	{
-	}
 
+Physics::~Physics()
+{
+}
 
-	//void Physics::update(sf::Time elapsedTime)//update is set by time thanks to the parameters
+void Physics::update(sf::Time deltaTime, sf::Shape &Object1, sf::Shape &Object2, sf::RenderWindow &mWindow)
+{
+	//if (mBall.getPosition().x - (mBall.getSize().x / 2) < 0 && movement.x < 0)
 	//{
-
-	//	/*
-	//														//movement of ball
-	//		if ((Ball1.getPosition().x + (size.x / 2) > mWindow.getSize().x && increment.x > 0) ||
-	//			(Ball1.getPosition().x - (size.x / 2) < 0 && increment.x < 0))
-	//		{
-	//			//Reverse the direction on X axis
-	//			increment.x = -increment.x;
-	//		}
-
-	//		if (Ball1.getPosition().y - (size.y / 2) < 0 && increment.y < 0)
-	//		{
-	//			//Reverse the direction on Y axis
-	//			increment.y = -increment.y;
-	//		}
-
-	//		if (Ball1.getPosition().y + (size.y / 2) > mWindow.getSize().y && increment.y > 0)
-	//		{
-	//			Ball1.setPosition(400.f, 10.f);
-	//			Lives--;
-	//		}
-	//		*/
-	//	Ball1.setPosition(Ball1.getPosition() + increment);
-
-	//	//Ball and paddle hit detection
-	//	//movement of ball
-
-	//	if ((Ball1.getPosition().y + (size.y / 2) > mPlayer2.getPosition().y && increment.y > 0) &&
-	//		(Ball1.getPosition().x + (size.x / 2) > mPlayer2.getPosition().x) &&
-	//		(Ball1.getPosition().x + (size.x / 2) < mPlayer2.getPosition().x + 100) &&
-	//		(Ball1.getPosition().y + (size.y / 2) < mPlayer2.getPosition().y + 10 && increment.y > 0))
-
-	//	{
-	//		increment.y = -increment.y;
-	//		Score++;
-	//	}
-
-		//Ball1.setPosition(Ball1.getPosition() + increment);
+	//	mBall.setPosition(400.f, 10.f);
+	//	//Lives1--;
+	//	//Player1Text.setString("Player 1 Lives: " + std::to_string(Lives1));
 	//}
+
+	//if (mBall.getPosition().x + (mBall.getSize().x / 2) > mWindow.getSize().x && movement.x > 0)
+	//{
+	//	mBall.setPosition(400.f, 10.f);
+	//	//Lives2--;
+	//	//Player2Text.setString("Player 2 Lives: " + std::to_string(Lives2));
+	//}
+
+	//if ((mBall.getPosition().x + (mBall.getSize().x) > mPaddle1.mPlayer.getPosition().x - 20 && movement.x > 0) &&
+	//	(mBall.getPosition().y + (mBall.getSize().y) > mPaddle1.mPlayer.getPosition().y) &&
+	//	(mBall.getPosition().y + (mBall.getSize().y) < mPaddle1.mPlayer.getPosition().y + 100) &&
+	//	(mBall.getPosition().x + (mBall.getSize().x) < mPaddle1.mPlayer.getPosition().x + 10 && movement.x > 0))
+
+	//{
+	//	//increment.x = (increment.x * -1);
+	//	//Score++;
+	//}
+
+	//if ((mBall.getPosition().x + (mBall.getSize().x) > mPaddle2.mPlayer.getPosition().x && movement.x < 0) &&
+	//	(mBall.getPosition().y + (mBall.getSize().y) > mPaddle2.mPlayer.getPosition().y) &&
+	//	(mBall.getPosition().y + (mBall.getSize().y) < mPaddle2.mPlayer.getPosition().y + 100) &&
+	//	(mBall.getPosition().x + (mBall.getSize().x) < mPaddle2.mPlayer.getPosition().x + 10 && movement.x < 0))
+
+	//{
+	//	//increment.x = (increment.x * -1);
+	//	//Score++;
+	//}
+}
+
+sf::Vector2f Physics::Distance(sf::Vector2f pos1, sf::Vector2f pos2)
+{
+	return sf::Vector2f(abs(pos1.x - pos2.x), abs(pos1.y - pos2.y));
+}
+
+bool Physics::Distance(sf::Vector2f pos1, sf::Vector2f pos2, float Gap)
+{
+	if (abs(pos1.x - pos2.x) < Gap && abs(pos1.y - pos2.y) < Gap)
+	{
+		return true;
+	}
+	return false;
+}

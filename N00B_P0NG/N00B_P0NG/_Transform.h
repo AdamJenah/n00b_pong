@@ -20,7 +20,7 @@ public:
 	sf::Transform SetSca(float PX, float PY);//for rect
 	sf::Transform SetSca(float Radius);//for circle
 
-	sf::Vector2f MoveObj2D(float PX, float PY);
+	void MoveObj2D(sf::Shape &shape, sf::Vector2f Incurment, sf::Time elapsedTime);
 
 	sf::Vector2f GetPos();
 	float GetRot();

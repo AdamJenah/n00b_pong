@@ -1,28 +1,27 @@
 #pragma once
-
-#define BOOK_GAME_HPP
-
+#include "NoobInit.h"
+#include "Paddle.h"
+#include "_Transform.h"
+#include "Physics.h"
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>//Required for audio
-
 
 class Ball: private sf::NonCopyable
 {
 public:
 	Ball();
 	~Ball();
-private:
-	sf::RectangleShape	Ball1;
-	sf::RectangleShape mPlayer2;
-	sf::Vector2u size;
-	sf::RenderWindow mWindow;
 
-	sf::Vector2f increment;
+	sf::RectangleShape mBall;
+	sf::Texture mBallTexture;
+	sf::Vector2f movement;
 
-	int Score;
-	int Lives;
+	Physics physics;
+	_Transform transform;
 
-	void update(sf::Time deltaTime);
-	
+	float BallSpeed;
+
+	void update(sf::Time deltaTime, Paddle &mPaddle, Paddle &mPaddle2, sf::RenderWindow &mWindow, sf::Text &player1Text, sf::Text &player2Text, int &player1Lives, int &player2Lives);
+	void LoadTextures();
+	void setInitTransform();
 };
 

@@ -1,31 +1,34 @@
 #pragma once
-
+#include "NoobInit.h"
+#include "_Transform.h"
+#include "Physics.h"
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>//Required for audio
-
-
-
 
 class Paddle
-
 {
 public:
-	Paddle();
+	Paddle(float px, float py, std::string _Tag);
 	~Paddle();
-private:
-	sf::RectangleShape Ball;
 
-	sf::RectangleShape mPlayer2;
-	sf::RectangleShape mPlayer1;
+	sf::Texture mPaddleTexture;
+	sf::RectangleShape mPlayer;
+	sf::Vector2f movement;
+	std::string Tag;
 
-	void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);//Makes program handle player inputs
-	void update(sf::Time deltaTime);
+	_Transform transform;
 
-	float PlayerSpeed;//Initializes PlayerSpeed
+	float PlayerSpeed;
 
 	bool mIsMovingUp;
 	bool mIsMovingDown;
-	bool mIsMovingRight;
-	bool mIsMovingLeft;
+	bool mIsMovingW;
+	bool mIsMovingS;
+
+	void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
+	void update(sf::Time deltaTime, sf::RenderWindow &mWindow);
+	void CheckBoundsPlayer1(sf::Time elapsedTime, sf::RenderWindow &mWindow);
+	void CheckBoundsPlayer2(sf::Time elapsedTime, sf::RenderWindow &mWindow);
+	void LoadTextures();
+	void setInitTransform(float px, float py);
 };
 

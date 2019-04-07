@@ -11,25 +11,34 @@ SceneManager::~SceneManager()
 
 void SceneManager::LoadTextures()
 {
-	if (!_texture.loadFromFile("TEST_TEXTURE.jpg", sf::IntRect(10, 10, 32, 32)))
+	if (!_texture.loadFromFile("Assets/paddle.png"))
 	{
 		std::cout << "Failed To Load Texture" << std::endl;
 	}
 	else
 	{
-		_texture.loadFromFile("TEST_TEXTURE.jpg");
+		//_texture.loadFromFile("Assets/paddle.png");
+		std::cout << "Loaded Texture" << std::endl;
 	}
 }
 
 // Do Draw objects here but the updates are called in Objects
 void SceneManager::Scene()
 {
-	//ALL OBJECTS ARE CREATED HERE
-	//test(test_1, false, true);
-	//test.sprite.setTexture(_texture);
-	//test_1.AddComponent(&test);
-	//test.transform.SetPos(100, 100);
-	//AddObject(&test_1);
+	testSprite.MySprite2D(100, 100, 10, 10, 0, &_texture);
+	test_1.AddComponent(&testSprite);
+	testRect.MyRect2D(100, 100, 10, 10, 0, sf::Color::Cyan);
+	test_1.AddComponent(&testRect);
+
+	AddObject(&test_1);
+}
+
+void SceneManager::Start()
+{
+	testSprite = *new Sprite2D;
+	testRect = *new Rectangle2D;
+	test_1 = *new Objects;
+	LoadTextures();
 }
 
 void SceneManager::UpdateObj(sf::Time elapsedTime, sf::RenderWindow& _window)
@@ -50,7 +59,7 @@ void SceneManager::AddObject(Objects *pushObj)
 
 void SceneManager::RemoveObject(Objects * Index)
 {
-	//must swap object to delete, to the top, then pop the object.
+	//must swap object to delete; swap to the top, then pop the object.
 	sceneObjects.pop_back();
 }
 

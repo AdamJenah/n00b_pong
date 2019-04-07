@@ -1,34 +1,49 @@
 #include "BaseComponent.h"
+#include "Sprite2D.h"
+#include "Rectangle2D.h"
 
-BaseComponent::BaseComponent(Objects* _gameObject, bool moveAble, bool renderAble)
+BaseComponent::BaseComponent(Sprite2D *_gameObject, bool moveAble, bool renderAble)
 {
-	gameObject = _gameObject;
+	SpritegameObject = _gameObject;
 }
 
+BaseComponent::BaseComponent(Rectangle2D *_gameObject, bool moveAble, bool renderAble)
+{
+	RectgameObject = _gameObject;
+}
 
 BaseComponent::~BaseComponent()
 {
 }
 
-void BaseComponent::draw(sf::RenderWindow &window)
-{
-	window.draw(sprite);
-}
-
-void BaseComponent::Start()
-{
-}
-
-void BaseComponent::Update(float msec, sf::RenderWindow &window)
+void BaseComponent::draw(sf::RenderWindow &window, sf::Drawable *shape)
 {
 	if (Renderable)
 	{
-		draw(window);
+		window.draw(*shape);
+	}
+}
+
+void BaseComponent::Start(_Transform *transform)//make templates for Rectgameobject
+{
+	if (Moveable)
+	{
+		/*RectgameObject->transform.SetPos(transform->GetPos().x, transform->GetPos().y);
+		RectgameObject->transform.SetRot(transform->GetRot(), transform->GetPos().x, RectgameObject->transform.GetPos().y);
+		RectgameObject->transform.SetSca(transform->GetSca().x, transform->GetSca().y);*/
+	}
+}
+
+void BaseComponent::Update(float msec, _Transform *transform, sf::RenderWindow &window)
+{
+	if (Renderable)
+	{
+		draw(window, &SpritegameObject->ThisSpriteHold);//only drawing the sprite, twice for rectangle2D
 	}
 	if (Moveable)
 	{
-		transform.SetPos(gameObject->transform->GetPos().x, gameObject->transform->GetPos().y);
-		transform.SetRot(gameObject->transform->GetRot(), gameObject->transform->GetPos().x, gameObject->transform->GetPos().y);
-		transform.SetSca(gameObject->transform->GetSca().x, gameObject->transform->GetSca().y);
+		//RectgameObject->transform.SetPos(transform->GetPos().x, transform->GetPos().y);
+		//RectgameObject->transform.SetRot(transform->GetRot(), transform->GetPos().x, RectgameObject->transform.GetPos().y);
+		//RectgameObject->transform.SetSca(transform->GetSca().x, transform->GetSca().y);
 	}
 }

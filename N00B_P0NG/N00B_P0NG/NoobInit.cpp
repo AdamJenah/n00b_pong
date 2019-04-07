@@ -21,47 +21,45 @@ void N00BP0NG::Run()
 
 	Game game;
 	game.run();
-	/*
-	SceneManager SceneM;
-	InputHandler InputH;
-	sf::RenderWindow window(sf::VideoMode(1000, 800), "SFML works!");
 
-	SceneM.Scene();
+	//SceneManager SceneM;
+	//InputHandler InputH;
+	//sf::RenderWindow window(sf::VideoMode(1000, 800), "SFML works!");
 
+	//SceneM.Start();//scene inits
+	//SceneM.Scene();//creates the scene
 
-	sf::Clock clock;//Create Clock Variable
-	sf::Time timeSinceLastUpdate = sf::Time::Zero;
-	while (window.isOpen())
-	{
-		sf::Time elapsedTime = clock.restart();//gets delta time
-		timeSinceLastUpdate += elapsedTime;
-		sf::Event event;
-		while (timeSinceLastUpdate > FrameTime)
-		{
-
-			timeSinceLastUpdate -= FrameTime;
-			window.clear();
-			SceneM.UpdateObj(FrameTime, window);//updates all objects
-			window.display();
-		}
-		while (window.pollEvent(event))
-		{
-			switch (event.type)
-			{
-			case sf::Event::Closed:
-				window.close();
-				break;
-				//KEYBOARD PRESSED AND RELEASED EVENTS INITIALIZE
-			case sf::Event::KeyPressed:
-				InputH.handlePlayerInput(event.key.code, true);
-				break;
-			case sf::Event::KeyReleased:
-				InputH.handlePlayerInput(event.key.code, false);
-				break;
-			}
-		}
-	}
-	*/
+	//sf::Clock clock;//Create Clock Variable
+	//sf::Time timeSinceLastUpdate = sf::Time::Zero;
+	//while (window.isOpen())
+	//{
+	//	sf::Time elapsedTime = clock.restart();//gets delta time
+	//	timeSinceLastUpdate += elapsedTime;
+	//	sf::Event event;
+	//	while (timeSinceLastUpdate > FrameTime)
+	//	{
+	//		timeSinceLastUpdate -= FrameTime;
+	//		window.clear();
+	//		SceneM.UpdateObj(FrameTime, window);//updates all objects
+	//		window.display();
+	//	}
+	//	while (window.pollEvent(event))
+	//	{
+	//		switch (event.type)
+	//		{
+	//		case sf::Event::Closed:
+	//			window.close();
+	//			break;
+	//			//KEYBOARD PRESSED AND RELEASED EVENTS INITIALIZE
+	//		case sf::Event::KeyPressed:
+	//			InputH.handlePlayerInput(event.key.code, true);
+	//			break;
+	//		case sf::Event::KeyReleased:
+	//			InputH.handlePlayerInput(event.key.code, false);
+	//			break;
+	//		}
+	//	}
+	//}
 }
 
 bool N00BP0NG::Initialize()

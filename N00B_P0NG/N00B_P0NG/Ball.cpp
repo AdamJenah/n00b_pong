@@ -1,14 +1,11 @@
 #include "Ball.h"
 
-
-
 Ball::Ball()
-#pragma region Step2
-	:Ball1(sf::Vector2f(10.0f, 10.0f))
 {
-	Ball1.setPosition(400.f, 10.f);//changes position of the circle
-	Ball1.setFillColor(sf::Color::Yellow);//Sets the color of the circle
-
+	LoadTextures();
+	setInitTransform();
+	BallSpeed = 200.0f;
+	movement = sf::Vector2f(BallSpeed, BallSpeed);
 }
 
 
@@ -16,43 +13,67 @@ Ball::~Ball()
 {
 }
 
-void Ball::update(sf::Time elapsedTime)//update is set by time thanks to the parameters
+void Ball::update(sf::Time elapsedTime, Paddle &mPaddle1, Paddle &mPaddle2, sf::RenderWindow &mWindow, sf::Text &player1Text, sf::Text &player2Text, int &player1Lives, int &player2Lives)
 {
-
-
-													//movement of ball
-	if ((Ball1.getPosition().x + (size.x / 2) > mWindow.getSize().x && increment.x > 0) ||
-		(Ball1.getPosition().x - (size.x / 2) < 0 && increment.x < 0))
-	{
-		//Reverse the direction on X axis
-		increment.x = -increment.x;
-	}
-
-	if (Ball1.getPosition().y - (size.y / 2) < 0 && increment.y < 0)
+	if (physics.Distance(transform.GetPos(), sf::Vector2f(mWindow.getSize())).y < transform.GetSca().y / 2
+		|| physics.Distance(transform.GetPos(), sf::Vector2f(0, 0)).y < transform.GetSca().y / 2)
 	{
 		//Reverse the direction on Y axis
-		increment.y = -increment.y;
+		movement.y = (movement.y * -1);
 	}
 
-	if (Ball1.getPosition().y + (size.y / 2) > mWindow.getSize().y && increment.y > 0)
+	if (physics.Distance(transform.GetPos(), sf::Vector2f(0, 0)).x < transform.GetSca().x / 2)
 	{
-		Ball1.setPosition(400.f, 10.f);
-		Lives--;
+		transform.SetPos(mWindow.getSize().x / 2, transform.GetSca().y);
+		mBall.setPosition(transform.GetPos());
+		player1Lives--;
+		player1Text.setString("Player 1 Lives: " + std::to_string(player1Lives));
 	}
 
-	Ball1.setPosition(Ball1.getPosition() + increment);
-
-	//Ball and paddle hit detection
-	//movement of ball
-
-	if ((Ball1.getPosition().y + (size.y / 2) > mPlayer2.getPosition().y && increment.y > 0) &&
-		(Ball1.getPosition().x + (size.x / 2) > mPlayer2.getPosition().x) &&
-		(Ball1.getPosition().x + (size.x / 2) < mPlayer2.getPosition().x + 100) &&
-		(Ball1.getPosition().y + (size.y / 2) < mPlayer2.getPosition().y + 10 && increment.y > 0))
-
+	if (physics.Distance(transform.GetPos(), sf::Vector2f(mWindow.getSize())).x < transform.GetSca().x / 2)
 	{
-		increment.y = -increment.y;
-		Score++;
+		transform.SetPos(mWindow.getSize().x / 2, transform.GetSca().y);
+		mBall.setPosition(transform.GetPos());
+		player2Lives--;
+		player2Text.setString("Player 2 Lives: " + std::to_string(player2Lives));
 	}
-	Ball1.setPosition(Ball1.getPosition() + increment);
+
+	if (physics.Distance(transform.GetPos(), mPaddle1.transform.GetPos()).x < transform.GetSca().x &&
+		(mBall.getPosition().y + (mBall.getSize().y) > mPaddle1.mPlayer.getPosition().y) &&
+		(mBall.getPosition().y + (mBall.getSize().y) < mPaddle1.mPlayer.getPosition().y + 100))
+	{
+		movement.x = (movement.x * -1);
+		//Score++;
+	}
+
+	if (physics.Distance(transform.GetPos(), mPaddle2.transform.GetPos()).x < transform.GetSca().x &&
+		(mBall.getPosition().y + (mBall.getSize().y) > mPaddle2.mPlayer.getPosition().y) &&
+		(mBall.getPosition().y + (mBall.getSize().y) < mPaddle2.mPlayer.getPosition().y + 100))
+	{
+		movement.x = (movement.x * -1);
+		//Score++;
+	}
+	transform.MoveObj2D(mBall, movement, elapsedTime);
+	transform.SetPos(mBall.getPosition().x, mBall.getPosition().y);
+}
+
+void Ball::LoadTextures()
+{
+	if (!mBallTexture.loadFromFile("Assets/Ball.jpg"))
+	{
+		std::cout << "Failed to Load" << std::endl;
+	}
+	else
+	{
+		mBall.setTexture(&mBallTexture, false);
+		mBallTexture.setRepeated(true);
+	}
+}
+
+void Ball::setInitTransform()
+{
+	transform.SetSca(20, 20);
+	mBall.setSize(transform.GetSca());
+	transform.SetPos(400, transform.GetSca().y);
+	mBall.setPosition(transform.GetPos());
 }

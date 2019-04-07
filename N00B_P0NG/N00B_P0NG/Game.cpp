@@ -10,28 +10,20 @@ Game::Game()
 	: mWindow(sf::VideoMode(800, 700), "N00B P0NG", sf::Style::Close)
 	, mGameBackground()
 	, mBackground()
-	, mBallTexture()
-	, mPaddle()
-	, mBall(sf::Vector2f(15.0f, 15.0f))
-	, mPlayer2(sf::Vector2f(25.0f, 100.0f))
-	, mPlayer1(sf::Vector2f(25.0f, 100.0f))
 	, splashscreen(sf::Vector2f(25.0f, 100.0f))
 	, Gamescreen(sf::Vector2f(25.0f, 100.0f))
 	, splashText()
 	, splash(false)
-	, timer(5)
-	, mIsMovingLeft(false)
-	, mIsMovingRight(false)
-	, increment(3.0f, 3.0f)
+	, timer(1)
 	, Score(0)
 	, Lives1(3)
 	, Lives2(3)
-	, PlayerSpeed(300.0f)
-	, PlayerSpeed2(300.0f)
 	, MenuSound()
 	, GameSound()
 	, Player1Text()
 	, Player2Text()
+	, mPlayer1(25.0f, 0.f, "1")
+	, mPlayer2(750.0f, 0.f, "2")
 
 {
 	if (!font.loadFromFile("Assets/ArialCE.ttf"))
@@ -79,36 +71,10 @@ Game::Game()
 		Gamescreen.setTexture(&mGameBackground, false);
 		mGameBackground.setRepeated(true);
 	}
-	if (!mBallTexture.loadFromFile("Assets/Ball.jpg"))
-	{
-		std::cout << "Failed to Load" << std::endl;
-	}
-	else
-	{
-		mBall.setTexture(&mBallTexture, false);
-		mBallTexture.setRepeated(true);
-	}
-	if (!mPaddle.loadFromFile("Assets/Wood.jpg"))
-	{
-		std::cout << "Failed to Load" << std::endl;
-	}
-	else
-	{
-		mPlayer1.setTexture(&mPaddle, false);
-		mPlayer2.setTexture(&mPaddle, false);
-	}
-
 
 	SoundBuffer.setLoop(true);
 	SoundBuffer.play();
 
-	mBall.setPosition(0.f, 10.f);//changes position of the circle
-	mBall.setSize(sf::Vector2f(20,20));
-
-	mPlayer2.setPosition(775.0f, 0.f);
-	mPlayer2.setScale(.5, 1);
-	mPlayer1.setPosition(25.0f, 0.f);
-	mPlayer1.setScale(.5, 1);
 	splashscreen.setSize(sf::Vector2f(mWindow.getSize().x, mWindow.getSize().y));
 	splashscreen.setPosition(0, 0);
 	Gamescreen.setSize(sf::Vector2f(mWindow.getSize().x, mWindow.getSize().y));
@@ -160,32 +126,14 @@ void Game::processEvents()
 			break;
 			//KEYBOARD PRESSED AND RELEASED EVENTS INITIALIZE
 		case sf::Event::KeyPressed:
-			handlePlayerInput(event.key.code, true);
+			mPlayer1.handlePlayerInput(event.key.code, true);
+			mPlayer2.handlePlayerInput(event.key.code, true);
 			break;
 		case sf::Event::KeyReleased:
-			handlePlayerInput(event.key.code, false);
+			mPlayer1.handlePlayerInput(event.key.code, false);
+			mPlayer2.handlePlayerInput(event.key.code, false);
 			break;
 		}
-	}
-}
-
-//ACTUAL LOCATION TO DECIDE WHAT KEY DOES WHAT
-void Game::handlePlayerInput(sf::Keyboard::Key key, bool isPressed) {
-
-	if (isPressed)//For when pressed
-	{
-		if (key == sf::Keyboard::Up) mIsMovingLeft = true;
-		else if (key == sf::Keyboard::Down) mIsMovingRight = true;
-		if (key == sf::Keyboard::W) mIsMovingUp = true;
-		else if (key == sf::Keyboard::S) mIsMovingDown = true;
-	}
-
-	if (!isPressed)//For when not pressed
-	{
-		if (key == sf::Keyboard::Up) mIsMovingLeft = false;
-		else if (key == sf::Keyboard::Down) mIsMovingRight = false;
-		if (key == sf::Keyboard::W) mIsMovingUp = false;
-		else if (key == sf::Keyboard::S) mIsMovingDown = false;
 	}
 }
 
@@ -207,94 +155,9 @@ void Game::update(sf::Time elapsedTime)//update is set by time thanks to the par
 	}
 	else
 	{
-		sf::Vector2f movement(0.f, 0.f);
-		sf::Vector2f movement2(0.f, 0.f);//Adds movement per frame(required for player movement)
-		if (mIsMovingLeft) movement.y -= PlayerSpeed;//The speed that the plane moves left
-		if (mIsMovingRight)movement.y += PlayerSpeed;//The speed that the plane moves Right
-		if (mIsMovingUp) movement2.y -= PlayerSpeed2;//The speed that the plane moves left
-		if (mIsMovingDown)movement2.y += PlayerSpeed2;
-		mPlayer2.move(movement*elapsedTime.asSeconds());//Setting the actual object to be moved
-		mPlayer1.move(movement2*elapsedTime.asSeconds());//Setting the actual object to be moved
-
-		if (mPlayer2.getPosition().y > 600)
-		{
-			PlayerSpeed = -PlayerSpeed;
-			mPlayer2.setPosition(775.0f, 604);
-		}
-		else if (mPlayer2.getPosition().y < 600 && mPlayer2.getPosition().y>0)
-		{
-			PlayerSpeed = 300.0f;
-		}
-		else if (mPlayer2.getPosition().y < 0)
-		{
-			PlayerSpeed = -PlayerSpeed;
-			mPlayer2.setPosition(775.0f, -4);
-		}
-
-		if (mPlayer1.getPosition().y > 600)
-		{
-			PlayerSpeed2 = -PlayerSpeed2;
-			mPlayer1.setPosition(25.0f, 604);
-		}
-		else if (mPlayer1.getPosition().y < 600 && mPlayer1.getPosition().y>0)
-		{
-			PlayerSpeed2 = 300.0f;
-		}
-		else if (mPlayer1.getPosition().y < 0)
-		{
-			PlayerSpeed2 = -PlayerSpeed2;
-			mPlayer1.setPosition(25.0f, -4);
-		}
-
-
-		//movement of ball
-		if ((mBall.getPosition().y + (size.y / 2) > mWindow.getSize().y && increment.y > 0) ||
-			(mBall.getPosition().y - (size.y / 2) < 0 && increment.y < 0))
-		{
-			//Reverse the direction on X axis
-			increment.y = -increment.y;
-		}
-
-		if (mBall.getPosition().x - (size.x / 2) < 0 && increment.x < 0)
-		{
-			mBall.setPosition(400.f, 10.f);
-			Lives1--;
-			Player1Text.setString("Player 1 Lives: " + std::to_string(Lives1));
-		}
-
-		if (mBall.getPosition().x + (size.x / 2) > mWindow.getSize().x && increment.x > 0)
-		{
-			mBall.setPosition(400.f, 10.f);
-			Lives2--;
-			Player2Text.setString("Player 2 Lives: " + std::to_string(Lives2));
-		}
-
-		mBall.setPosition(mBall.getPosition() + increment);
-
-		//Ball and paddle hit detection
-		//movement of ball
-
-		if ((mBall.getPosition().x + (size.x) > mPlayer2.getPosition().x - 20 && increment.x > 0) &&
-			(mBall.getPosition().y + (size.y) > mPlayer2.getPosition().y) &&
-			(mBall.getPosition().y + (size.y) < mPlayer2.getPosition().y + 100) &&
-			(mBall.getPosition().x + (size.x) < mPlayer2.getPosition().x + 10 && increment.x > 0))
-
-		{
-			increment.x = (increment.x * -1);
-			Score++;
-		}
-
-		if ((mBall.getPosition().x + (size.x) > mPlayer1.getPosition().x && increment.x < 0) &&
-			(mBall.getPosition().y + (size.y) > mPlayer1.getPosition().y) &&
-			(mBall.getPosition().y + (size.y) < mPlayer1.getPosition().y + 100) &&
-			(mBall.getPosition().x + (size.x) < mPlayer1.getPosition().x + 10 && increment.x < 0))
-
-		{
-			increment.x = (increment.x * -1);
-			Score++;
-		}
-
-		mBall.setPosition(mBall.getPosition() + increment);
+		mBall.update(elapsedTime, mPlayer1, mPlayer2, mWindow, Player1Text, Player2Text, Lives1, Lives2);
+		mPlayer1.update(elapsedTime, mWindow);
+		mPlayer2.update(elapsedTime, mWindow);
 	}
 }
 
@@ -310,9 +173,9 @@ void Game::render()
 	else
 	{
 		mWindow.draw(Gamescreen);
-		mWindow.draw(mPlayer2);
-		mWindow.draw(mPlayer1);
-		mWindow.draw(mBall);
+		mWindow.draw(mPlayer1.mPlayer);
+		mWindow.draw(mPlayer2.mPlayer);
+		mWindow.draw(mBall.mBall);
 		mWindow.draw(Player1Text);
 		mWindow.draw(Player2Text);
 	}

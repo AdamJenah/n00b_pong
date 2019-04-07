@@ -19,20 +19,17 @@ void Objects::Start()
 {
 	for (BaseComponent* component : components)
 	{
-		component->Start();
+		component->Start(transform);
 	}
 }
 
 void Objects::Update(float msec, sf::RenderWindow &window)
 {
-	//if (parent) { //This node has a parent...
-	//	worldTransform = parent->worldTransform * transform;
-	//}
-	//else { //Root node, world transform is local transform!
-	//	worldTransform = transform;
-	//}
+
+	//also update yourself
+
 	for (BaseComponent* component : components)
 	{
-		component->Update(msec, window);
+		component->Update(msec, transform, window);
 	}
 }

@@ -48,11 +48,9 @@ sf::Transform _Transform::SetSca(float Radius)
 	return temp.scale(Radius, Radius);
 }
 
-sf::Vector2f _Transform::MoveObj2D(float PX, float PY)//focus on this later, when needed
-{
-	sf::Vector2f Incurment(PX, PY);
-	CurPos += Incurment;
-	return CurPos;
+void _Transform::MoveObj2D(sf::Shape &shape, sf::Vector2f Incurment, sf::Time elapsedTime)//focus on this later, when needed
+{	
+	shape.move(Incurment * elapsedTime.asSeconds());
 }
 
 sf::Vector2f _Transform::GetPos()
