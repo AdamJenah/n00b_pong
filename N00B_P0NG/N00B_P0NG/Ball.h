@@ -19,9 +19,16 @@ public:
 	_Transform transform;
 
 	float BallSpeed;
+	bool player1IsAlive;
+	bool player2IsAlive;
 
 	void update(sf::Time deltaTime, Paddle &mPaddle, Paddle &mPaddle2, sf::RenderWindow &mWindow, sf::Text &player1Text, sf::Text &player2Text, int &player1Lives, int &player2Lives);
 	void LoadTextures();
 	void setInitTransform();
+	bool player1Status();
+	bool player2Status();
+	void SetPlayer1Alive();
+	void SetPlayer2Alive();
+
 };
 

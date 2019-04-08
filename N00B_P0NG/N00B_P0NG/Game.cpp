@@ -1,6 +1,8 @@
 #include "Game.h"
 #include "Ball.h"
 #include "Paddle.h"
+#include "Audio.h"
+#include "Menu.h"
 #include <SFML/Window.hpp>
 
 
@@ -26,6 +28,14 @@ Game::Game()
 	, mPlayer2(750.0f, 0.f, "2")
 
 {
+
+
+	Audio::PlayMusic("SpaceGroove.wav");
+
+
+	//------------------------------------------------------------
+
+
 	if (!font.loadFromFile("Assets/ArialCE.ttf"))
 	{
 		std::cout << "Failed to Load" << std::endl;
@@ -37,22 +47,7 @@ Game::Game()
 		Player2Text.setFont(font);
 	}
 
-	if (!MenuSound.loadFromFile("Assets/MenuGroove.wav"))
-	{
-		std::cout << "Failed to Load" << std::endl;
-	}
-	else
-	{
-		SoundBuffer.setBuffer(MenuSound);
-	}
-	if (!MenuSound.loadFromFile("Assets/SpaceGroove.wav"))
-	{
-		std::cout << "Failed to Load" << std::endl;
-	}
-	else
-	{
-		SoundBuffer2.setBuffer(GameSound);
-	}
+
 	if (!mBackground.loadFromFile("Assets/background.jpg"))
 	{
 		std::cout << "Failed to Load" << std::endl;
@@ -72,8 +67,8 @@ Game::Game()
 		mGameBackground.setRepeated(true);
 	}
 
-	SoundBuffer.setLoop(true);
-	SoundBuffer.play();
+
+	//------------------------------------------------------------
 
 	splashscreen.setSize(sf::Vector2f(mWindow.getSize().x, mWindow.getSize().y));
 	splashscreen.setPosition(0, 0);
@@ -147,17 +142,33 @@ void Game::update(sf::Time elapsedTime)//update is set by time thanks to the par
 		}
 		else
 		{
-			SoundBuffer.stop();
-			SoundBuffer2.setLoop(true);
-			SoundBuffer2.play();
+			mBall.SetPlayer1Alive();
+			mBall.SetPlayer2Alive();
+			Lives1 = 3;
+			Lives2 = 3;
 			splash = true;
+
 		}
+
+
 	}
 	else
 	{
 		mBall.update(elapsedTime, mPlayer1, mPlayer2, mWindow, Player1Text, Player2Text, Lives1, Lives2);
 		mPlayer1.update(elapsedTime, mWindow);
 		mPlayer2.update(elapsedTime, mWindow);
+		
+		
+		if (mBall.player1Status() == false) {
+			timer = 3;
+			splash = false;
+
+		}
+
+		if (mBall.player2Status() == false) {
+			timer = 3;
+			splash = false;
+		}
 	}
 }
 
@@ -167,6 +178,7 @@ void Game::render()
 
 	if (splash == false)
 	{
+
 		mWindow.draw(splashscreen);
 		mWindow.draw(splashText);
 	}
@@ -181,6 +193,86 @@ void Game::render()
 	}
 	mWindow.display();
 }
+
+
+
+//void Game::render()
+//{
+//	mWindow.clear();
+//
+//	if (splash == false)
+//	{
+//		mWindow.draw(splashscreen);
+//		mWindow.draw(splashText);
+//
+//	}
+//	else
+//	{
+//		Menu menu(mWindow.getSize().x, mWindow.getSize().y);
+//
+//		while (mWindow.isOpen())
+//		{
+//			sf::Event event;
+//
+//			while (mWindow.pollEvent(event))
+//			{
+//				switch (event.type)
+//				{
+//				case sf::Event::KeyReleased:
+//					switch (event.key.code)
+//					{
+//					case sf::Keyboard::Up:
+//						menu.MoveUp();
+//						break;
+//
+//					case sf::Keyboard::Down:
+//						menu.MoveDown();
+//						break;
+//
+//					case sf::Keyboard::Return:
+//						switch (menu.GetPressedItem())
+//						{
+//						case 0:
+//							mWindow.draw(Gamescreen);
+//							mWindow.draw(mPlayer1.mPlayer);
+//							mWindow.draw(mPlayer2.mPlayer);
+//							mWindow.draw(mBall.mBall);
+//							mWindow.draw(Player1Text);
+//							mWindow.draw(Player2Text);
+//							std::cout << "Play button has been pressed" << std::endl;
+//
+//							break;
+//						case 1:
+//							std::cout << "Option button has been pressed" << std::endl;
+//							break;
+//						case 2:
+//							mWindow.close();
+//							break;
+//						}
+//
+//						break;
+//					}
+//
+//					break;
+//				case sf::Event::Closed:
+//					mWindow.close();
+//
+//					break;
+//
+//				}
+//			}
+//
+//			mWindow.clear();
+//
+//			menu.draw(mWindow);
+//
+//			mWindow.display();
+//		}
+//		
+//	}
+//}
+
+
 
 void Game::updateStatistics(sf::Time elapsedTime)
 {

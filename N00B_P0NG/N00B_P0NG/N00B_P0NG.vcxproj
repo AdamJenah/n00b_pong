@@ -125,12 +125,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="BaseComponent.cpp" />
     <ClCompile Include="Circle2D.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="NoobInit.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="Objects.cpp" />
@@ -143,6 +146,7 @@
     <ClCompile Include="_Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Audio.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="base.h" />
     <ClInclude Include="BaseComponent.h" />
@@ -150,6 +154,8 @@
     <ClInclude Include="Circle2D.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Graphics.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="NoobInit.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Objects.h" />

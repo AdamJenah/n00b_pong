@@ -46,6 +46,7 @@ private:
 	sf::Image mIcon;//Used to set the icon of our window to something
 
 	bool splash;
+	bool menu;
 
 	float timer;
 	static const sf::Time FrameTime;//Initializes frame time
