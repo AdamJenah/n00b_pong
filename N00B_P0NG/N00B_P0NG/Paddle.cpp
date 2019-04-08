@@ -21,12 +21,12 @@ void Paddle::handlePlayerInput(sf::Keyboard::Key key, bool isPressed) {
 
 	if (isPressed)//For when pressed
 	{
-		if (Tag == "1")
+		if (Tag == "1")//for player 1
 		{
 			if (key == sf::Keyboard::W) mIsMovingW = true;
 			else if (key == sf::Keyboard::S) mIsMovingS = true;
 		}
-		else
+		else//for player 2
 		{
 			if (key == sf::Keyboard::Up) mIsMovingUp = true;
 			else if (key == sf::Keyboard::Down) mIsMovingDown = true;
@@ -35,12 +35,12 @@ void Paddle::handlePlayerInput(sf::Keyboard::Key key, bool isPressed) {
 
 	if (!isPressed)//For when not pressed
 	{
-		if (Tag == "1")
+		if (Tag == "1")//for player 1
 		{
 			if (key == sf::Keyboard::W) mIsMovingW = false;
 			else if (key == sf::Keyboard::S) mIsMovingS = false;
 		}
-		else
+		else//for player 2
 		{
 			if (key == sf::Keyboard::Up) mIsMovingUp = false;
 			else if (key == sf::Keyboard::Down) mIsMovingDown = false;

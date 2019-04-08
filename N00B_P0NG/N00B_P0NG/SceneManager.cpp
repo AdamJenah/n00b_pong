@@ -2,6 +2,8 @@
 
 SceneManager::SceneManager()
 {
+	testSprite = 0;
+	testRect = 0;
 }
 
 
@@ -11,13 +13,12 @@ SceneManager::~SceneManager()
 
 void SceneManager::LoadTextures()
 {
-	if (!_texture.loadFromFile("Assets/paddle.png"))
+	if (!_texture.loadFromFile("Assets/Wood.jpg"))
 	{
 		std::cout << "Failed To Load Texture" << std::endl;
 	}
 	else
 	{
-		//_texture.loadFromFile("Assets/paddle.png");
 		std::cout << "Loaded Texture" << std::endl;
 	}
 }
@@ -25,18 +26,18 @@ void SceneManager::LoadTextures()
 // Do Draw objects here but the updates are called in Objects
 void SceneManager::Scene()
 {
-	testSprite.MySprite2D(100, 100, 10, 10, 0, &_texture);
-	test_1.AddComponent(&testSprite);
-	testRect.MyRect2D(100, 100, 10, 10, 0, sf::Color::Cyan);
-	test_1.AddComponent(&testRect);
+	testSprite->MySprite2D(1, 1, 10, 10, 0, _texture);
+	test_1.AddComponent(testSprite);
+	//testRect.MyRect2D(100, 100, 10, 10, 0, sf::Color::Cyan);
+	//test_1.AddComponent(&testRect);
 
 	AddObject(&test_1);
 }
 
 void SceneManager::Start()
 {
-	testSprite = *new Sprite2D;
-	testRect = *new Rectangle2D;
+	testSprite = new Sprite2D;
+	testRect = new Rectangle2D;
 	test_1 = *new Objects;
 	LoadTextures();
 }

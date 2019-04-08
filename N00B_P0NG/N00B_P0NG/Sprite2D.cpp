@@ -8,7 +8,7 @@ Sprite2D::~Sprite2D()
 {
 }
 
-void Sprite2D::MySprite2D(float TL, float BR, float PX, float PY, float Angle, sf::Texture _texture, sf::Color _color)
+void Sprite2D::MySprite2D(float TL, float BR, float PX, float PY, float Angle, sf::Texture &_texture, sf::Color _color)
 {
 	sf::Sprite temp;
 	temp.setColor(_color);
@@ -23,7 +23,7 @@ void Sprite2D::MySprite2D(float TL, float BR, float PX, float PY, float Angle, s
 	ThisSpriteHold = temp;
 }
 
-void Sprite2D::MySprite2D(float TL, float BR, float PX, float PY, float Angle, sf::Texture *_texture)
+void Sprite2D::MySprite2D(float TL, float BR, float PX, float PY, float Angle, sf::Texture &_texture)
 {
 	sf::Sprite temp;
 	temp.setOrigin(transform.GetSca().x / 2, transform.GetSca().y / 2);
@@ -33,6 +33,6 @@ void Sprite2D::MySprite2D(float TL, float BR, float PX, float PY, float Angle, s
 	temp.setPosition(transform.GetPos());
 	temp.setRotation(transform.GetRot());
 	temp.setScale(transform.GetSca());
-	temp.setTexture(*_texture, false);
+	temp.setTexture(_texture, false);
 	ThisSpriteHold = temp;
 }

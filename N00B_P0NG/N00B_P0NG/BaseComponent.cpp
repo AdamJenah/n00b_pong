@@ -1,49 +1,55 @@
 #include "BaseComponent.h"
 #include "Sprite2D.h"
 #include "Rectangle2D.h"
+#include "Paddle.h"
 
 BaseComponent::BaseComponent(Sprite2D *_gameObject, bool moveAble, bool renderAble)
 {
 	SpritegameObject = _gameObject;
+	Moveable = moveAble;
+	Renderable = renderAble;
 }
 
 BaseComponent::BaseComponent(Rectangle2D *_gameObject, bool moveAble, bool renderAble)
 {
 	RectgameObject = _gameObject;
+	Moveable = moveAble;
+	Renderable = renderAble;
 }
 
 BaseComponent::~BaseComponent()
 {
 }
 
-void BaseComponent::draw(sf::RenderWindow &window, sf::Drawable *shape)
+void BaseComponent::draw(sf::RenderWindow &window, sf::Drawable &shape)
 {
 	if (Renderable)
 	{
-		window.draw(*shape);
+		//std::cout << "Display" << std::endl;
+		window.draw(shape);
 	}
 }
 
-void BaseComponent::Start(_Transform *transform)//make templates for Rectgameobject
+void BaseComponent::Start(_Transform &transform)//make templates for all components
 {
 	if (Moveable)
 	{
-		/*RectgameObject->transform.SetPos(transform->GetPos().x, transform->GetPos().y);
-		RectgameObject->transform.SetRot(transform->GetRot(), transform->GetPos().x, RectgameObject->transform.GetPos().y);
-		RectgameObject->transform.SetSca(transform->GetSca().x, transform->GetSca().y);*/
+		/*SpritegameObject->transform.SetPos(transform->GetPos().x, transform->GetPos().y);
+		SpritegameObject->transform.SetRot(transform->GetRot(), transform->GetPos().x, SpritegameObject->transform.GetPos().y);
+		SpritegameObject->transform.SetSca(transform->GetSca().x, transform->GetSca().y);*/
 	}
 }
 
-void BaseComponent::Update(float msec, _Transform *transform, sf::RenderWindow &window)
+void BaseComponent::Update(float msec, _Transform &transform, sf::RenderWindow &window)
 {
 	if (Renderable)
 	{
-		draw(window, &SpritegameObject->ThisSpriteHold);//only drawing the sprite, twice for rectangle2D
+		draw(window, SpritegameObject->ThisSpriteHold);
 	}
 	if (Moveable)
 	{
-		//RectgameObject->transform.SetPos(transform->GetPos().x, transform->GetPos().y);
-		//RectgameObject->transform.SetRot(transform->GetRot(), transform->GetPos().x, RectgameObject->transform.GetPos().y);
-		//RectgameObject->transform.SetSca(transform->GetSca().x, transform->GetSca().y);
+		//SpritegameObject->transform.SetPos(transform->GetPos().x, transform->GetPos().y);
+		//SpritegameObject->transform.SetRot(transform->GetRot(), transform->GetPos().x, SpritegameObject->transform.GetPos().y);
+		//SpritegameObject->transform.SetSca(transform->GetSca().x, transform->GetSca().y);
 	}
 }

@@ -16,6 +16,7 @@ Game::Game()
 	, Gamescreen(sf::Vector2f(25.0f, 100.0f))
 	, splashText()
 	, splash(false)
+	, _menu(false)
 	, timer(1)
 	, Score(0)
 	, Lives1(3)
@@ -26,6 +27,7 @@ Game::Game()
 	, Player2Text()
 	, mPlayer1(25.0f, 0.f, "1")
 	, mPlayer2(750.0f, 0.f, "2")
+	, menu(mWindow.getSize().x, mWindow.getSize().y)
 
 {
 
@@ -47,7 +49,6 @@ Game::Game()
 		Player2Text.setFont(font);
 	}
 
-
 	if (!mBackground.loadFromFile("Assets/background.jpg"))
 	{
 		std::cout << "Failed to Load" << std::endl;
@@ -57,6 +58,7 @@ Game::Game()
 		splashscreen.setTexture(&mBackground, false);
 		mBackground.setRepeated(true);
 	}
+
 	if (!mGameBackground.loadFromFile("Assets/Gamebackground.jpg"))
 	{
 		std::cout << "Failed to Load" << std::endl;
@@ -98,7 +100,6 @@ void Game::run()
 		timeSinceLastUpdate += elapsedTime;
 		while (timeSinceLastUpdate > FrameTime)
 		{
-
 			timeSinceLastUpdate -= FrameTime;
 			processEvents();
 			update(FrameTime);//makes the update into per second insead of per frame
@@ -127,7 +128,32 @@ void Game::processEvents()
 		case sf::Event::KeyReleased:
 			mPlayer1.handlePlayerInput(event.key.code, false);
 			mPlayer2.handlePlayerInput(event.key.code, false);
-			break;
+			switch (event.key.code)
+			{
+			case sf::Keyboard::Up:
+				menu.MoveUp();
+				break;
+
+			case sf::Keyboard::Down:
+				menu.MoveDown();
+				break;
+
+			case sf::Keyboard::Return:
+				switch (menu.GetPressedItem())
+				{
+				case 0:
+					_menu = true;
+					std::cout << "Play button has been pressed" << std::endl;
+					break;
+				case 1:
+					std::cout << "Option button has been pressed" << std::endl;
+					break;
+				case 2:
+					mWindow.close();
+					break;
+				}
+				break;
+			}
 		}
 	}
 }
@@ -172,15 +198,41 @@ void Game::update(sf::Time elapsedTime)//update is set by time thanks to the par
 	}
 }
 
+//void Game::render()
+//{
+//	mWindow.clear();
+//
+//	if (splash == false)
+//	{
+//
+//		mWindow.draw(splashscreen);
+//		mWindow.draw(splashText);
+//	}
+//	else
+//	{
+//		mWindow.draw(Gamescreen);
+//		mWindow.draw(mPlayer1.mPlayer);
+//		mWindow.draw(mPlayer2.mPlayer);
+//		mWindow.draw(mBall.mBall);
+//		mWindow.draw(Player1Text);
+//		mWindow.draw(Player2Text);
+//	}
+//	mWindow.display();
+//}
+
+
+
 void Game::render()
 {
 	mWindow.clear();
-
 	if (splash == false)
 	{
-
 		mWindow.draw(splashscreen);
 		mWindow.draw(splashText);
+	}
+	else if(splash == true && _menu == false)
+	{
+		menu.draw(mWindow);
 	}
 	else
 	{
@@ -193,84 +245,6 @@ void Game::render()
 	}
 	mWindow.display();
 }
-
-
-
-//void Game::render()
-//{
-//	mWindow.clear();
-//
-//	if (splash == false)
-//	{
-//		mWindow.draw(splashscreen);
-//		mWindow.draw(splashText);
-//
-//	}
-//	else
-//	{
-//		Menu menu(mWindow.getSize().x, mWindow.getSize().y);
-//
-//		while (mWindow.isOpen())
-//		{
-//			sf::Event event;
-//
-//			while (mWindow.pollEvent(event))
-//			{
-//				switch (event.type)
-//				{
-//				case sf::Event::KeyReleased:
-//					switch (event.key.code)
-//					{
-//					case sf::Keyboard::Up:
-//						menu.MoveUp();
-//						break;
-//
-//					case sf::Keyboard::Down:
-//						menu.MoveDown();
-//						break;
-//
-//					case sf::Keyboard::Return:
-//						switch (menu.GetPressedItem())
-//						{
-//						case 0:
-//							mWindow.draw(Gamescreen);
-//							mWindow.draw(mPlayer1.mPlayer);
-//							mWindow.draw(mPlayer2.mPlayer);
-//							mWindow.draw(mBall.mBall);
-//							mWindow.draw(Player1Text);
-//							mWindow.draw(Player2Text);
-//							std::cout << "Play button has been pressed" << std::endl;
-//
-//							break;
-//						case 1:
-//							std::cout << "Option button has been pressed" << std::endl;
-//							break;
-//						case 2:
-//							mWindow.close();
-//							break;
-//						}
-//
-//						break;
-//					}
-//
-//					break;
-//				case sf::Event::Closed:
-//					mWindow.close();
-//
-//					break;
-//
-//				}
-//			}
-//
-//			mWindow.clear();
-//
-//			menu.draw(mWindow);
-//
-//			mWindow.display();
-//		}
-//		
-//	}
-//}
 
 
 

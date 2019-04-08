@@ -56,6 +56,7 @@ void Ball::update(sf::Time elapsedTime, Paddle &mPaddle1, Paddle &mPaddle2, sf::
 		(mBall.getPosition().y + (mBall.getSize().y) > mPaddle1.mPlayer.getPosition().y) &&
 		(mBall.getPosition().y + (mBall.getSize().y) < mPaddle1.mPlayer.getPosition().y + 100))
 	{
+		IncreaseSpeed();
 		movement.x = (movement.x * -1);
 		//Score++;
 	}
@@ -64,6 +65,7 @@ void Ball::update(sf::Time elapsedTime, Paddle &mPaddle1, Paddle &mPaddle2, sf::
 		(mBall.getPosition().y + (mBall.getSize().y) > mPaddle2.mPlayer.getPosition().y) &&
 		(mBall.getPosition().y + (mBall.getSize().y) < mPaddle2.mPlayer.getPosition().y + 100))
 	{
+		IncreaseSpeed();
 		movement.x = (movement.x * -1);
 		//Score++;
 	}
@@ -92,6 +94,19 @@ void Ball::setInitTransform()
 	mBall.setPosition(transform.GetPos());
 }
 
+void Ball::IncreaseSpeed()
+{
+	if(BallSpeed < 500)
+	BallSpeed += 50;
+	if (movement.x < 0)
+	{
+		movement = sf::Vector2f(-BallSpeed, -BallSpeed);
+	}
+	else
+	{
+		movement = sf::Vector2f(BallSpeed, BallSpeed);
+	}
+}
 
 bool Ball::player1Status() {
 	return player1IsAlive;
@@ -99,7 +114,6 @@ bool Ball::player1Status() {
 
 bool Ball::player2Status() {
 	return player2IsAlive;
-
 }
 
 void Ball::SetPlayer1Alive() {
@@ -107,8 +121,6 @@ void Ball::SetPlayer1Alive() {
 
 }
 
-
 void Ball::SetPlayer2Alive() {
 	player2IsAlive = true;
-
 }

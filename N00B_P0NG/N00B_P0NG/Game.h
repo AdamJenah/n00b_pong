@@ -1,6 +1,7 @@
 #include "NoobClass.h"
 #include "Ball.h"
 #include "Paddle.h"
+#include "Menu.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>//Required for audio
 
@@ -46,7 +47,7 @@ private:
 	sf::Image mIcon;//Used to set the icon of our window to something
 
 	bool splash;
-	bool menu;
+	bool _menu;
 
 	float timer;
 	static const sf::Time FrameTime;//Initializes frame time
@@ -58,5 +59,7 @@ private:
 	//sf::Text mStatisticsText;//ADDS STATISTICS TEXT
 	sf::Time mStatisticsUpdateTime;//ADDS THE FUNCTION FOR STATISTICS TO UPDATE
 	std::size_t	mStatisticsNumFrames;
+
+	Menu menu;
 };
 

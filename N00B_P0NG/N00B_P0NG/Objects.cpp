@@ -19,7 +19,7 @@ void Objects::Start()
 {
 	for (BaseComponent* component : components)
 	{
-		component->Start(transform);
+		component->Start(*transform);
 	}
 }
 
@@ -30,6 +30,6 @@ void Objects::Update(float msec, sf::RenderWindow &window)
 
 	for (BaseComponent* component : components)
 	{
-		component->Update(msec, transform, window);
+		component->Update(msec, *transform, window);
 	}
 }

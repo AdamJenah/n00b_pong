@@ -25,10 +25,10 @@ public:
 	void update(sf::Time deltaTime, Paddle &mPaddle, Paddle &mPaddle2, sf::RenderWindow &mWindow, sf::Text &player1Text, sf::Text &player2Text, int &player1Lives, int &player2Lives);
 	void LoadTextures();
 	void setInitTransform();
+	void IncreaseSpeed();
 	bool player1Status();
 	bool player2Status();
 	void SetPlayer1Alive();
 	void SetPlayer2Alive();
-
 };
 
