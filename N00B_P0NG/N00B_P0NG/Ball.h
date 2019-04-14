@@ -29,6 +29,8 @@ public:
 	bool player1Status();
 	bool player2Status();
 	void SetPlayer1Alive();
+	void SetBallSpeed(float ballSpeed);
 	void SetPlayer2Alive();
+
 };
 

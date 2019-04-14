@@ -76,17 +76,17 @@ Game::Game()
 	splashscreen.setPosition(0, 0);
 	Gamescreen.setSize(sf::Vector2f(mWindow.getSize().x, mWindow.getSize().y));
 	Gamescreen.setPosition(0, 0);
-	splashText.setString("Splash Screen");
+	splashText.setString("N00B-P0NG");
 	splashText.setCharacterSize(30);
 	splashText.setFillColor(sf::Color::Red);
 	splashText.setPosition((mWindow.getSize().x / 2) - 90, mWindow.getSize().y - 90 / 2);
-	Player1Text.setString("Player 1 Lives: " + std::to_string(Lives1));
-	Player1Text.setCharacterSize(20);
-	Player1Text.setFillColor(sf::Color::Red);
-	Player1Text.setPosition(10, 10);
-	Player2Text.setString("Player 2 Lives: " + std::to_string(Lives2));
-	Player2Text.setCharacterSize(20);
-	Player2Text.setFillColor(sf::Color::Red);
+	Player1Text.setString(std::to_string(Lives1));
+	Player1Text.setCharacterSize(40);
+	Player1Text.setFillColor(sf::Color::White);
+	Player1Text.setPosition(mWindow.getSize().x/4, 10);
+	Player2Text.setString(std::to_string(Lives2));
+	Player2Text.setCharacterSize(40);
+	Player2Text.setFillColor(sf::Color::White);
 	Player2Text.setPosition(mWindow.getSize().x - 180, 10);
 }
 
@@ -146,9 +146,6 @@ void Game::processEvents()
 					std::cout << "Play button has been pressed" << std::endl;
 					break;
 				case 1:
-					std::cout << "Option button has been pressed" << std::endl;
-					break;
-				case 2:
 					mWindow.close();
 					break;
 				}
@@ -162,12 +159,14 @@ void Game::update(sf::Time elapsedTime)//update is set by time thanks to the par
 {
 	if (splash == false)
 	{
+
 		if (timer > 0)
 		{
 			timer -= elapsedTime.asSeconds();
 		}
 		else
 		{
+			mBall.SetBallSpeed(200.0f);
 			mBall.SetPlayer1Alive();
 			mBall.SetPlayer2Alive();
 			Lives1 = 3;
@@ -188,12 +187,16 @@ void Game::update(sf::Time elapsedTime)//update is set by time thanks to the par
 		if (mBall.player1Status() == false) {
 			timer = 3;
 			splash = false;
+			_menu = false;
+
 
 		}
 
 		if (mBall.player2Status() == false) {
 			timer = 3;
 			splash = false;
+			_menu = false;
+
 		}
 	}
 }

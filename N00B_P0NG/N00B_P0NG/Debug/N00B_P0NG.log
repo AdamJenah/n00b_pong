@@ -1,12 +1,40 @@
-﻿  Ball.cpp
-c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\ball.cpp(29): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+﻿  Game.cpp
+d:\github\pong\n00b_pong\n00b_p0ng\n00b_p0ng\game.cpp(30): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=unsigned int
           ]
-c:\users\101057906\documents\github\n00b_pong\n00b_p0ng\n00b_p0ng\ball.cpp(43): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+d:\github\pong\n00b_pong\n00b_p0ng\n00b_p0ng\game.cpp(75): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
           ]
-  N00B_P0NG.vcxproj -> C:\Users\101057906\Documents\GitHub\n00b_pong\N00B_P0NG\Debug\N00B_P0NG.exe
+          and
+          [
+              T=float
+          ]
+d:\github\pong\n00b_pong\n00b_p0ng\n00b_p0ng\game.cpp(77): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+d:\github\pong\n00b_pong\n00b_p0ng\n00b_p0ng\game.cpp(82): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+d:\github\pong\n00b_pong\n00b_p0ng\n00b_p0ng\game.cpp(86): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+d:\github\pong\n00b_pong\n00b_p0ng\n00b_p0ng\game.cpp(90): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+  N00B_P0NG.vcxproj -> D:\GitHub\PONG\n00b_pong\N00B_P0NG\Debug\N00B_P0NG.exe
