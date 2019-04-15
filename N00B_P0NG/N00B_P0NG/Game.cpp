@@ -159,71 +159,47 @@ void Game::update(sf::Time elapsedTime)//update is set by time thanks to the par
 {
 	if (splash == false)
 	{
-
 		if (timer > 0)
 		{
 			timer -= elapsedTime.asSeconds();
 		}
 		else
 		{
-			mBall.SetBallSpeed(200.0f);
-			mBall.SetPlayer1Alive();
-			mBall.SetPlayer2Alive();
+			//Lives1 = 3;
+			//Lives2 = 3;
+			splash = true;
+		}
+	}
+	else if(_menu == true)
+	{
+		if (Lives1 <= 0) {
 			Lives1 = 3;
 			Lives2 = 3;
-			splash = true;
+			Player1Text.setString(std::to_string(Lives1));
+			Player2Text.setString(std::to_string(Lives2));
+			timer = 3;
+			splash = false;
+			_menu = false;
+
 
 		}
 
+		if (Lives2 <= 0) {
+			Lives1 = 3;
+			Lives2 = 3;
+			Player1Text.setString(std::to_string(Lives1));
+			Player2Text.setString(std::to_string(Lives2));
+			timer = 3;
+			splash = false;
+			_menu = false;
 
-	}
-	else
-	{
+		}
+
 		mBall.update(elapsedTime, mPlayer1, mPlayer2, mWindow, Player1Text, Player2Text, Lives1, Lives2);
 		mPlayer1.update(elapsedTime, mWindow);
 		mPlayer2.update(elapsedTime, mWindow);
-		
-		
-		if (mBall.player1Status() == false) {
-			timer = 3;
-			splash = false;
-			_menu = false;
-
-
-		}
-
-		if (mBall.player2Status() == false) {
-			timer = 3;
-			splash = false;
-			_menu = false;
-
-		}
 	}
 }
-
-//void Game::render()
-//{
-//	mWindow.clear();
-//
-//	if (splash == false)
-//	{
-//
-//		mWindow.draw(splashscreen);
-//		mWindow.draw(splashText);
-//	}
-//	else
-//	{
-//		mWindow.draw(Gamescreen);
-//		mWindow.draw(mPlayer1.mPlayer);
-//		mWindow.draw(mPlayer2.mPlayer);
-//		mWindow.draw(mBall.mBall);
-//		mWindow.draw(Player1Text);
-//		mWindow.draw(Player2Text);
-//	}
-//	mWindow.display();
-//}
-
-
 
 void Game::render()
 {

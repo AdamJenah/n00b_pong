@@ -30,14 +30,6 @@ void Ball::update(sf::Time elapsedTime, Paddle &mPaddle1, Paddle &mPaddle2, sf::
 		mBall.setPosition(transform.GetPos());
 		
 		player1Lives--;
-
-		if (player1Lives < 0) {
-
-			player1Lives = 3;
-			player2Lives = 3;
-			player1IsAlive = false;
-		}	
-		
 		player1Text.setString(std::to_string(player1Lives));
 	}
 
@@ -46,16 +38,7 @@ void Ball::update(sf::Time elapsedTime, Paddle &mPaddle1, Paddle &mPaddle2, sf::
 		transform.SetPos(mWindow.getSize().x / 2, transform.GetSca().y);
 		mBall.setPosition(transform.GetPos());
 
-			player2Lives--;
-
-	
-		if (player2Lives < 0) {
-
-			player2Lives = 3;
-			player1Lives = 3;
-			player2IsAlive = false;
-		}
-		
+		player2Lives--;	
 		player2Text.setString(std::to_string(player2Lives));
 	}
 
@@ -113,29 +96,4 @@ void Ball::IncreaseSpeed()
 	{
 		movement = sf::Vector2f(BallSpeed, BallSpeed);
 	}
-}
-
-bool Ball::player1Status() {
-	return player1IsAlive;
-
-}
-
-bool Ball::player2Status() {
-	return player2IsAlive;
-
-}
-
-void Ball::SetPlayer1Alive() {
-	player1IsAlive = true;
-
-
-}
-
-void Ball::SetPlayer2Alive() {
-	player2IsAlive = true;
-
-}
-
-void Ball::SetBallSpeed(float ballSpeed) {
-	BallSpeed = ballSpeed;
 }
